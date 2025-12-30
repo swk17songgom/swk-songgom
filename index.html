@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saka Wira Kartika Koramil 17/Songgom</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --army:#3f5224;
+  --army-dark:#2f3e1f;
+  --army-light:#cdd8b0;
+  --gold:#d4af37;
+  --bg:#f4f5f0;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#222}
+
+/* NAVBAR */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(47,62,31,.95);
+  padding:12px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:.3s;
+}
+nav.scrolled{box-shadow:0 4px 10px rgba(0,0,0,.3)}
+nav .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
+nav .logo img{width:36px}
+nav ul{display:flex;gap:20px;list-style:none}
+nav ul li a{color:#fff;text-decoration:none;font-size:14px}
+nav ul li a:hover{color:var(--gold)}
+/* Mobile menu */
+.mobile-menu{
+  display:none;
+  font-size:24px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  height:85vh;
+  background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),
+    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80');
+  background-size:cover;
+  background-position:center;
+  display:flex;align-items:center;padding:0 6%;color:#fff;
+}
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+  opacity:0;transform:translateY(50px);
+  animation:slideUp 1s forwards;
+}
+.hero p{
+  max-width:520px;
+  line-height:1.6;
+  opacity:0;transform:translateY(50px);
+  animation:fadeUp 1s forwards;
+  animation-delay:.3s;
+}
+
+/* SECTION */
+section{padding:80px 6%}
+.section-title{
+  font-size:26px;margin-bottom:30px;
+  border-left:6px solid var(--army);
+  padding-left:12px;
+}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about img{width:100%;border-radius:18px;transform:rotate(-3deg);box-shadow:0 10px 25px rgba(0,0,0,.3);}
+
+/* KRIDA */
+.krida-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.krida-card{
+  background:#fff;padding:25px 15px;border-radius:14px;text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  opacity:0;transform:translateY(40px);transition:.8s ease;
+}
+.krida-card.active{opacity:1;transform:none}
+.krida-card i{font-size:32px;color:var(--army);margin-bottom:10px}
+.krida-card h4{font-size:14px}
+
+/* BERITA */
+.berita-list{display:flex;flex-direction:column;gap:15px}
+.berita-item{
+  display:flex;gap:15px;align-items:center;background:#fff;padding:12px;
+  border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.1);
+  transition:.3s;
+}
+.berita-item:hover{transform:translateX(6px)}
+.berita-item img{width:120px;height:80px;object-fit:cover;border-radius:10px}
+.berita-item h4{font-size:15px}
+.berita-item span{font-size:12px;color:#666}
+
+/* PRESTASI */
+.prestasi-box{
+  background:#fff;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+/* GABUNG */
+.join{
+  background:linear-gradient(135deg,var(--army),var(--army-dark));
+  color:#fff;
+  padding:60px 20px;text-align:center;border-radius:20px;
+}
+.join a{
+  display:inline-block;margin-top:20px;background:var(--gold);
+  color:#000;padding:14px 30px;border-radius:30px;font-weight:bold;text-decoration:none;
+}
+
+/* FOOTER */
+footer{background:var(--army-dark);color:#fff;text-align:center;padding:30px}
+footer a{color:#fff;margin:0 10px;font-size:20px}
+
+/* ANIMATIONS */
+@keyframes slideUp{to{opacity:1;transform:none}}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(60px);transition:1s ease;}
+.reveal.active{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about{grid-template-columns:1fr}
+  .krida-grid{grid-template-columns:repeat(2,1fr)}
+  .mobile-menu{display:block}
+  nav ul{display:none;flex-direction:column;width:100%;background:var(--army);position:absolute;top:60px;left:0;padding:10px; border-radius:0 0 10px 10px;}
+  nav ul.active{display:flex}
+}
+@media(max-width:480px){
+  .hero h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    Saka Wira Kartika
+    Koramil 17/Songgom
+  </div>
+  <i class="fas fa-bars mobile-menu"></i>
+  <ul>
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="krida.html">Krida</a></li>
+    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Saka Wira Kartika</h1>
+    <p>Wadah pembinaan generasi muda dalam bela negara, disiplin, dan keterampilan.</p>
+  </div>
+</div>
+
+<section id="profil" class="reveal">
+  <h2 class="section-title">Tentang Kami</h2>
+  <div class="about">
+    <p>Saka Wira Kartika Koramil 17/Songgom adalah wadah bagi generasi muda yang  berkomitmen untuk membentuk generasi yang  berkarakter, disiplin, dan siap menghadapi tantangan dengan jiwa kepemimpinan dan nasionalisme.</p>
+    <img src="hero.jpg">
+  </div>
+</section>
+
+<section id="krida" class="reveal">
+  <h2 class="section-title">Krida</h2>
+  <div class="krida-grid">
+    <div class="krida-card">
+    <img src="navrat.jpg"
+    alt="Navigasi darat"
+    style="width:50px;height:50px;margin-bottom:10px;">
+    <h4>Navigasi Darat</h4>
+    </div>
+
+    <div class="krida-card">
+    <img src="pionerring.jpg"
+    alt="Pioneering"
+    style="width:50px;height:50px;margin-bottom:10px;">
+    <h4>Pioneering</h4>
+    </div>
+    <div class="krida-card">
+    <img src="mountainering.jpg"
+    alt="Mountainering"
+    style="width:50px;height:50px;margin-bottom:10px;">
+    <h4>Mountainering</h4>
+    </div>
+    <div class="krida-card">
+    <img src="survival.jpg"
+    alt="Survival"
+    style="width:50px;height:50px;margin-bottom:10px;">
+    <h4>Survival</h4>
+    </div>
+    <div class="krida-card">
+    <img src="pba.jpg"
+    alt="Penanggulangan Bencana Alam"
+    style="width:50px;height:50px;margin-bottom:10px;">
+    <h4>Penanggulangan Bencana</h4>
+   </div>
+  </div>
+</section>
+
+<section id="berita" class="reveal">
+  <h2 class="section-title">Berita</h2>
+  <div class="berita-list">
+    <a href="https://share.google/XY0dHdOYJjCmwhAIO" target="_blank" class="berita-item">
+      <img src="a1.jpeg">
+      <div>
+        <h4>Mencetak Generasi Berkarakter: Kiprah Saka Wira Kartika Koramil 17/Songgom dalam Pembinaan Pemuda Brebes
+
+
+
+</h4>
+        <span>Sumber: Kompasiana</span>
+      </div>
+    </a>
+    <a href="https://share.google/qdZEcdckZeqcEL6wl" target="_blank" class="berita-item">
+      <img src="beritaa.jpg">
+      <div>
+        <h4>Saka Wira Kartika Koramil 17/Songgom Gelar Pelantikan Dewan Saka Periode 2025, Meriah dengan Longmarch & Upacara Resmi</h4>
+        <span>Sumber: Kompasiana</span>
+      </div>
+    </a>
+<a href="https://share.google/sjAGKpHL2ZuxnJjHV" target="_blank" class="berita-item">
+      <img src="berita.jpg">
+      <div>
+        <h4>Latihan Rutin Saka Wira Kartika Koramil 17/Songgom: Awal Perjalanan Dewan Baru
+
+
+
+</h4>
+        <span>Sumber: Kompasiana</span>
+      </div>
+    </a>
+<a href="https://share.google/2uNiatfWqndQlqyv6" target="_blank" class="berita-item">
+      <img src="berita 2020.jpg">
+      <div>
+        <h4>Pramuka SWK Songgom Brebes, Long Mars dan Bersih-bersih Sampah di Parin
+
+
+
+</h4>
+        <span>Sumber: korem071.tni-ad.mil.id/</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="prestasi" class="reveal">
+  <h2 class="section-title">Prestasi</h2>
+  <div class="prestasi-box">
+    Prestasi lomba tingkat korem, lomba tingkat kodim, dan penghargaan lainnya.
+  </div>
+</section>
+
+<section id="gabung" class="reveal">
+  <div class="join">
+    <h2>Gabung Saka Wira Kartika</h2>
+    <p>Pendaftaran melalui Google Form</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog" target="_blank">Gabung Sekarang</a>
+  </div>
+</section>
+
+<footer>
+    <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
+  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+</footer>
+
+<script>
+// mobile menu toggle
+const menuBtn=document.querySelector(".mobile-menu");
+const navUl=document.querySelector("nav ul");
+menuBtn.addEventListener("click",()=>{navUl.classList.toggle("active");});
+
+// reveal scroll
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+
+// krida stagger animation
+const krida=document.querySelectorAll(".krida-card");
+krida.forEach((card,i)=>{
+  setTimeout(()=>card.classList.add("active"),200*i);
+});
+</script>
+
+</body>
+</html>

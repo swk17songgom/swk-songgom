@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prestasi Saka Wira Kartika</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --army:#3f5224;
+  --army-dark:#2f3e1f;
+  --gold:#d4af37;
+  --bg:#f4f5f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#222}
+
+/* NAVBAR */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(47,62,31,.95);
+  padding:12px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  animation:fadeDown 1s ease;
+}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:#fff;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--gold)}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
+.logo img{width:36px}
+
+/* HERO */
+.hero{
+  height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
+  background-size:cover;
+  background-position:center;
+  display:flex;align-items:center;
+  padding:0 6%;color:#fff;
+  text-align:center;
+}
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+  animation:slideUp 1s ease forwards;
+}
+.hero p{
+  font-size:18px;
+  opacity:0;
+  animation:fadeUp 1s ease forwards;
+  animation-delay:.3s;
+}
+
+/* SECTION */
+section{padding:60px 6%}
+.section-title{
+  font-size:28px;
+  margin-bottom:30px;
+  border-left:6px solid var(--army);
+  padding-left:12px;
+}
+
+/* PRESTASI GRID */
+.prestasi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.prestasi-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  text-align:center;
+  padding-bottom:15px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.prestasi-card.active{
+  opacity:1;
+  transform:none;
+}
+.prestasi-card img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+}
+.prestasi-card h4{
+  margin:12px 0 6px;
+  font-size:18px;
+}
+.prestasi-card p{
+  font-size:14px;
+  color:#555;
+}
+
+/* FOOTER */
+footer{
+  background:var(--army-dark);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+footer a{color:#fff;margin:0 10px;font-size:20px}
+
+/* ANIMATIONS */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-40px)}
+  to{opacity:1;transform:none}
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav ul{flex-wrap:wrap}
+}
+@media(max-width:480px){
+  nav ul{display:none}
+  .hero h1{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    Saka Wira Kartika Koramil 17/Songgom
+  </div>
+  <ul>
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="krida.html">Krida</a></li>
+    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Prestasi Saka Wira Kartika Koramil 17/Songgom</h1>
+    <p>Tingkatkan semangat, tunjukkan prestasi, harumkan nama Koramil 17/Songgom</p>
+  </div>
+</div>
+
+<section id="prestasi">
+  <h2 class="section-title">Prestasi</h2>
+  <div class="prestasi-grid">
+    <div class="prestasi-card">
+      <img src="piala.jpeg" alt="Pertiwika 2018">
+      <h4>Juara beberapa mata lomba pada pertiwika</h4>
+      <p>Tingkat Kodim 0713/Brebes Tahun 2018</p>
+    </div>
+    <div class="prestasi-card">
+      <img src="gerak jalan.jpeg" alt="Gerak Jalan">
+      <h4>Juara 2 Lomba Gerak Jalan</h4>
+      <p>Tingkat kecamatan Songgom 2024</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
+  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+</footer>
+
+<script>
+  // Reveal animation
+  const reveals = document.querySelectorAll(".prestasi-card");
+  window.addEventListener("scroll", () => {
+    reveals.forEach((el,i)=>{
+      if(el.getBoundingClientRect().top < window.innerHeight - 100){
+        setTimeout(()=>el.classList.add("active"), 150*i);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

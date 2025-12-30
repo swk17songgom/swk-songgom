@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kegiatan - Saka Wira Kartika Koramil 17 Songgom</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --army:#3f5224;
+  --army-dark:#2f3e1f;
+  --gold:#d4af37;
+  --bg:#f4f5f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#222}
+
+/* NAVBAR */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(47,62,31,.95);
+  padding:12px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  animation:fadeDown 1s ease;
+}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:#fff;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--gold)}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
+.logo img{width:36px}
+
+/* HERO */
+.hero{
+  height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
+  background-size:cover;
+  background-position:center;
+  display:flex;align-items:center;
+  padding:0 6%;color:#fff;
+}
+.hero h1{
+  font-size:38px;
+  margin-bottom:10px;
+  animation:slideUp 1s ease forwards;
+}
+.hero p{
+  max-width:600px;
+  line-height:1.6;
+  opacity:0;
+  animation:fadeUp 1.2s ease forwards;
+  animation-delay:.3s;
+}
+
+/* SECTION */
+section{padding:60px 6%}
+.section-title{
+  font-size:28px;
+  margin-bottom:30px;
+  border-left:6px solid var(--army);
+  padding-left:12px;
+}
+
+/* KEGIATAN ITEM */
+.kegiatan-item{
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  margin-bottom:30px;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.kegiatan-item.active{
+  opacity:1;
+  transform:none;
+}
+.kegiatan-item h3{
+  padding:20px;
+  color:var(--army);
+  font-size:22px;
+  margin-bottom:0;
+}
+.kegiatan-item .content{
+  padding:0 20px 20px 20px;
+}
+.kegiatan-item p{
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+.kegiatan-item .tanggal{
+  font-size:13px;
+  font-weight:bold;
+  color:var(--army-dark);
+  margin-bottom:10px;
+}
+.kegiatan-item .photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.kegiatan-item .photos img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:.3s;
+}
+.kegiatan-item .photos img:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+  background:var(--army-dark);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+footer a{color:#fff;margin:0 10px;font-size:20px}
+
+/* ANIMASI KEYFRAMES */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-40px)}
+  to{opacity:1;transform:none}
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .kegiatan-item .photos{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  nav ul{display:none}
+  .hero h1{font-size:28px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    Saka Wira Kartika
+    Koramil 17/Songgom
+  </div>
+  <ul>
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="krida.html">Krida</a></li>
+    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Kegiatan Saka Wira Kartika Koramil 17/Songgom</h1>
+    <p>Berbagai kegiatan rutin dan acara khusus anggota Saka Wira Kartika Koramil 17/Songgom.</p>
+  </div>
+</div>
+
+<section id="kegiatan" class="reveal">
+  <h2 class="section-title">Kegiatan</h2>
+
+  <!-- Contoh Kegiatan 1 -->
+  <div class="kegiatan-item">
+    <h3>Pertiwika Korem 071/Wijayakusuma 2017</h3>
+    <div class="content">
+      <p>Kegiatan Perkemahan Bakti Saka Wira Kartika tingkat Korem 071/Wijayakusuma.</p>
+      <div class="photos">
+        <img src="pert 1.jpeg">
+        <img src="pert 2.jpeg">
+        <img src="pert 3.jpeg">
+	<img src="pert 4.jpeg">
+	<img src="pert 5.jpeg">
+	<img src="pert 6.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 2 -->
+  <div class="kegiatan-item">
+    <h3>Pertiwika tingkat Kodim 0713/Brebes</h3>
+    <div class="content">
+      <p>Perkemahan Bakti Saka Wira Kartika tingkat Kodim 0713/Brebes.</p>
+      <div class="photos">
+        <img src="kod 1.jpeg">
+        <img src="kod 2.jpeg">
+        <img src="kod 3.jpeg">
+	<img src="kod 4.jpeg">
+	<img src="kod 5.jpeg">
+	<img src="kod 6.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 3 -->
+  <div class="kegiatan-item">
+    <h3>Long March</h3>
+    <div class="content">
+      <p>Long March sebagai rangkaian kegiatan dalam pelantikan Dewan Saka.</p>
+      <div class="photos">
+        <img src="long 1.jpeg">
+        <img src="long 2.jpeg">
+        <img src="long 3.jpeg">
+	<img src="long 4.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 4 -->
+  <div class="kegiatan-item">
+    <h3>Penanaman Pohon</h3>
+    <div class="content">
+      <p>Kegiatan Penanaman pohon di area lapangan tembak bersama dengan personel TNI Kodim 0713/Brebes.</p>
+      <div class="photos">
+        <img src="pohon 1.jpeg">
+        <img src="pohon 2.jpeg">
+        <img src="pohon 3.jpeg">
+	<img src="pohon 4.jpeg">
+	<img src="pohon 5.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 5 -->
+  <div class="kegiatan-item">
+    <h3>Wawasan Kebangsaan</h3>
+    <div class="content">
+      <p>Kegiatan Pemebinaan Wawasan Kebangsaan bertempat di Kodim 0713/Brebes.</p>
+      <div class="photos">
+        <img src="wasbang 1.jpeg">
+        <img src="wasbang 2.jpeg">
+        <img src="wasbang 3.jpeg">
+	<img src="wasbang 4.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 6 -->
+  <div class="kegiatan-item">
+    <h3>Bukber Saber</h3>
+    <div class="content">
+      <p>Kegiatan Buka Bersama dan Sahur Bersama disertai kegiatan pembagian takjil, pentas kreasi dan silaturahmi antar purna.</p>
+      <div class="photos">
+        <img src="bs 1.jpeg">
+        <img src="bs 2.jpeg">
+        <img src="bs 3.jpeg">
+	<img src="bs 4.jpeg">
+	<img src="bs 5.jpeg">
+        <img src="bs 6.jpeg">
+        <img src="bs 7.jpeg">
+	<img src="bs 8.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 7 -->
+  <div class="kegiatan-item">
+    <h3>HUT KE - 16 SAKA WIRA KARTIKA</h3>
+    <div class="content">
+      <p>Kegiatan Lomba PBB Variasi dan Pentas Kreasi Pramuka dalam rangka Peringatan HUT ke - 16 Saka Wira Kartika.</p>
+      <div class="photos">
+        <img src="lom 1.jpeg">
+        <img src="lom 2.jpeg">
+        <img src="lom 3.jpeg">
+	<img src="lom 4.jpeg">
+	<img src="lom 5.jpeg">
+        <img src="lom 6.jpeg">
+        <img src="lom 7.jpeg">
+	<img src="lom 8.jpeg">
+	<img src="lom 9.jpeg">
+	<img src="lom 10.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 8 -->
+  <div class="kegiatan-item">
+    <h3>Jelajah Alam</h3>
+    <div class="content">
+      <p>Kegiatan Pembelajaran dan praktek 5 krida langsung di alam.</p>
+      <div class="photos">
+        <img src="ja 1.jpeg">
+        <img src="ja 2.jpeg">
+        <img src="ja 3.jpeg">
+	<img src="ja 4.jpeg">
+	<img src="ja 5.jpeg">
+        <img src="ja 6.jpeg">
+        <img src="ja 7.jpeg">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
+ <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll(".reveal, .kegiatan-item");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>

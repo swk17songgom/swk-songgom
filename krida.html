@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krida - Saka Wira Kartika Koramil 17 Songgom</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --army:#3f5224;
+  --army-dark:#2f3e1f;
+  --gold:#d4af37;
+  --bg:#f4f5f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#222}
+
+/* NAVBAR */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(47,62,31,.95);
+  padding:12px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  animation:fadeDown 1s ease;
+}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:#fff;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--gold)}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
+.logo img{width:36px}
+
+/* HERO */
+.hero{
+  height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
+  background-size:cover;
+  background-position:center;
+  display:flex;align-items:center;
+  padding:0 6%;color:#fff;
+}
+.hero h1{
+  font-size:38px;
+  margin-bottom:10px;
+  animation:slideUp 1s ease forwards;
+}
+.hero p{
+  max-width:600px;
+  line-height:1.6;
+  opacity:0;
+  animation:fadeUp 1.2s ease forwards;
+  animation-delay:.3s;
+}
+
+/* SECTION */
+section{padding:60px 6%}
+.section-title{
+  font-size:28px;
+  margin-bottom:30px;
+  border-left:6px solid var(--army);
+  padding-left:12px;
+}
+
+/* KRIDA */
+.krida-item{
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  margin-bottom:30px;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.krida-item.active{
+  opacity:1;
+  transform:none;
+}
+.krida-item h3{
+  padding:20px;
+  color:var(--army);
+  font-size:22px;
+  margin-bottom:0;
+}
+.krida-item .content{
+  padding:0 20px 20px 20px;
+}
+.krida-item p{
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+.krida-item .skk{
+  font-size:13px;
+  font-weight:bold;
+  color:var(--army-dark);
+  margin-bottom:10px;
+}
+.krida-item .photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.krida-item .photos img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:.3s;
+}
+.krida-item .photos img:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+  background:var(--army-dark);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+footer a{color:#fff;margin:0 10px;font-size:20px}
+
+/* ANIMASI KEYFRAMES */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-40px)}
+  to{opacity:1;transform:none}
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .krida-item .photos{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  nav ul{display:none}
+  .hero h1{font-size:28px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    Saka Wira Kartika
+    Koramil 17/Songgom
+  </div>
+    <ul>
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="krida.html">Krida</a></li>
+    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Krida Saka Wira Kartika</h1>
+    <p>Berbagai kegiatan dan kemampuan yang dilatih untuk anggota Saka Wira Kartika Koramil 17/Songgom.</p>
+  </div>
+</div>
+
+<section id="krida" class="reveal">
+  <h2 class="section-title">Krida</h2>
+
+  <!-- Navigasi Darat -->
+  <div class="krida-item">
+    <h3>Navigasi Darat</h3>
+    <div class="content">
+      <p>Latihan membaca peta, kompas, dan orientasi medan lapangan.</p>
+      <div class="skk">SKK: Pengetahuan Peta & Medan, Kompas Siang & Malam, GPS (Global Positioning System), dan Teknik Khusus</div>
+      <div class="photos">
+        <img src="navrat 1.jpeg">
+        <img src="navrat 2.jpeg">
+        <img src="navrat 3.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Pioneering -->
+  <div class="krida-item">
+    <h3>Pioneering</h3>
+    <div class="content">
+      <p>Membuat bangunan sederhana dari tali dan kayu, melatih kerja tim dan kreativitas.</p>
+      <div class="skk">SKK: Tali Temali, Pembuatan Jembatan Improvisasi, Pembuatan Perkemahan, dan Bekal Air dan Listrik Darurat</div>
+      <div class="photos">
+        <img src="pioneer 1.jpeg">
+        <img src="pioneer 2.jpeg">
+        <img src="pioneer 3.jpeg">
+      </div>
+    </div>
+  </div>
+
+ <!-- Mountaineering -->
+  <div class="krida-item">
+    <h3>Mountaineering</h3>
+    <div class="content">
+      <p>Keterampilan dalam mendaki gunung, menggunakan peralatan pendakian, dan bertahan hidup di medan pegunungan.</p>
+      <div class="skk">SKK: panjat tebing, turun tebing (rappelling), pelintasan kering (SAR), dan pelintasan basah</div>
+      <div class="photos">
+        <img src="mount 1.jpeg">
+        <img src="mount 2.jpeg">
+        <img src="mount 3.jpeg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Survival -->
+  <div class="krida-item">
+    <h3>Survival</h3>
+    <div class="content">
+      <p>Keterampilan bertahan hidup di alam terbuka, termasuk api, makanan, dan tempat berteduh.</p>
+      <div class="skk">SKK: Jenis-jenis Tumbuhan, Jenis-jenis Binatang, Hutan dan Gunung, Survival Kit, dan Sanjak.</div>
+      <div class="photos">
+        <img src="surv 1.jpeg">
+        <img src="surv 2.jpeg">
+        <img src="surv 3.jpeg">
+      </div>
+    </div>
+  </div>
+
+<!-- Penanggulangan Bencana Alam -->
+  <div class="krida-item">
+    <h3>Penangggulangan Bencana Alam</h3>
+    <div class="content">
+      <p>keterampilan praktis dalam mencegah, menanggulangi, dan memitigasi bencana alam di wilayah daratan.</p>
+      <div class="skk">SKK: Manajemen Penanggulangan Bencana, Pertolongan Pertama Gawat Darurat, Komunikasi Radio, dan Tata Cara Memasak.</div>
+      <div class="photos">
+        <img src="pba 1.jpeg">
+        <img src="pba 2.jpeg">
+        <img src="pba 3.jpeg">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
+  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll(".reveal, .krida-item");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
