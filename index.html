@@ -362,10 +362,18 @@ const krida=document.querySelectorAll(".krida-card");
 krida.forEach((card,i)=>{
   setTimeout(()=>card.classList.add("active"),200*i);
 });
+
+const hamburger = document.getElementById("hamburger");
+const navUl = document.querySelector("nav ul");
+
+hamburger.addEventListener("click", ()=>{
+  navUl.classList.toggle("active");
+});
 </script>
 
 </body>
 
 </html>
+
 
 
