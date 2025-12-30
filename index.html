@@ -26,24 +26,53 @@ body{background:var(--bg);color:#222}
 
 /* NAVBAR */
 nav{
-  position:sticky;top:0;z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
-  display:flex;justify-content:space-between;align-items:center;
-  transition:.3s;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  animation:fadeDown 1s ease;
 }
-nav.scrolled{box-shadow:0 4px 10px rgba(0,0,0,.3)}
-nav .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
-nav .logo img{width:36px}
-nav ul{display:flex;gap:20px;list-style:none}
-nav ul li a{color:#fff;text-decoration:none;font-size:14px}
-nav ul li a:hover{color:var(--gold)}
-/* Mobile menu */
-.mobile-menu{
-  display:none;
-  font-size:24px;
+nav ul{
+  display:flex;
+  gap:20px;
+  list-style:none;
+}
+nav a{
   color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+nav a:hover{
+  color:var(--gold);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  color:#fff;
+}
+.logo img{
+  width:36px;
+}
+
+/* Hamburger mobile */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
   cursor:pointer;
+}
+.hamburger span{
+  display:block;
+  width:25px;
+  height:3px;
+  background:#fff;
+  border-radius:2px;
 }
 
 /* HERO */
@@ -131,6 +160,9 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 /* ANIMATIONS */
 @keyframes slideUp{to{opacity:1;transform:none}}
 @keyframes fadeUp{to{opacity:1;transform:none}}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-40px)}
+  to{opacity:1;transform:none}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(60px);transition:1s ease;}
@@ -145,7 +177,21 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   nav ul.active{display:flex}
 }
 @media(max-width:480px){
-  .hero h1{font-size:30px}
+  .hamburger{display:flex}
+  nav ul{
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:var(--army-dark);
+    padding:10px;
+  }
+  nav ul.active{
+    display:flex;
+  }
 }
 </style>
 </head>
@@ -157,6 +203,11 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <img src="logo.png">
     Saka Wira Kartika
     Koramil 17/Songgom
+  </div>
+    <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
   <i class="fas fa-bars mobile-menu"></i>
   <ul>
@@ -316,4 +367,5 @@ krida.forEach((card,i)=>{
 </body>
 
 </html>
+
 
