@@ -4,282 +4,157 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profil - Saka Wira Kartika Koramil 17 Songgom</title>
-<meta name="description" content="Website resmi Saka Wira Kartika Koramil 17 Songgom. profil, krida, kegiatan, prestasi, dan pendaftaran anggota.">
-<meta name="keywords" content="Saka Wira Kartika, Pramuka, Koramil 17 Songgom, Krida, Kegiatan, Prestasi">
-<meta name="author" content="Saka Wira Kartika Koramil 17 Songgom.">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" href="logo.png" type="image/png">
-
 <style>
 :root{
-  --army:#3f5224;
-  --army-dark:#2f3e1f;
-  --gold:#d4af37;
-  --bg:#f4f5f0;
+  --army:#3f5224; --army-dark:#2f3e1f; --gold:#d4af37; --bg:#f4f5f0;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:#222}
+body{background:var(--bg);color:#222;}
 
-/* NAVBAR */
+/* NAV */
 nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
+  position:sticky;top:0;z-index:9999;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  animation:fadeDown 1s ease;
+  display:flex;justify-content:space-between;align-items:center;
 }
-nav ul{
-  display:flex;
-  gap:20px;
-  list-style:none;
-}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-}
-nav a:hover{
-  color:var(--gold);
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-  color:#fff;
-}
-.logo img{
-  width:36px;
-}
+nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold}
+nav .logo img{width:36px}
 
-/* Hamburger mobile */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
+.nav-links{display:flex;list-style:none;gap:10px}
+.nav-links a{
+  color:#fff;text-decoration:none;
+  padding:12px 14px;border-radius:15px;
+  transition:.3s;font-size:14px;
 }
-.hamburger span{
-  display:block;
-  width:25px;
-  height:3px;
-  background:#fff;
-  border-radius:2px;
-}
+.nav-links a:hover,
+.nav-links a.active{background:var(--gold);color:#000}
 
-/* HERO */
-.hero{
-  height:60vh;
-  background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
-    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
-  background-size:cover;
+.mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
+
+.hero{height:60vh;background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");background-
+
+size:cover;background-position:center;display:flex;align-items:center;padding:0 6%;color:#fff;}
+.hero h1{font-size:38px;margin-bottom:10px;animation:slideUp 1s ease forwards;}
+.hero p{max-width:600px;line-height:1.6;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:.3s;}
+section{padding:60px 6%;position:relative;}
+.section-title{font-size:28px;margin-bottom:30px;border-left:6px solid var(--army);padding-left:12px;}
+
+/* WATERMARK SECTION */
+.section-watermark::before{
+  content:"";
+  position:absolute;inset:0;
+  background:url("logo.png");
+  background-size:120px;
+  background-repeat:repeat; 
   background-position:center;
-  display:flex;align-items:center;
-  padding:0 6%;color:#fff;
+  opacity:.04;
+  transform:rotate(-12deg);
+  z-index:0;
+  pointer-events:none; /* fix klik ga kepalang watermark */
 }
-.hero h1{
-  font-size:38px;
-  margin-bottom:10px;
-  animation:slideUp 1s ease forwards;
-}
-.hero p{
-  max-width:600px;
-  line-height:1.6;
-  opacity:0;
-  animation:fadeUp 1.2s ease forwards;
-  animation-delay:.3s;
-}
+.section-watermark>*{position:relative;z-index:2}
 
-/* SECTION */
-section{padding:60px 6%}
-.section-title{
-  font-size:28px;
-  margin-bottom:30px;
-  border-left:6px solid var(--army);
-  padding-left:12px;
-}
-
-/* REVEAL ANIMATION */
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
-}
-.reveal.active{
-  opacity:1;
-  transform:none;
-}
-
-/* ABOUT / SEJARAH */
-.about-section{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
+.about-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
 .about-section img{
-  width:100%;
-  border-radius:18px;
+  cursor:pointer;
   transform:rotate(-3deg);
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
+  transition:.4s;
+  max-width:100%;
+  max-height:400px;
+  border-radius:18px
 }
+.about-section img:hover{transform:scale(1.05) rotate(-3deg)}
 
-/* VISI & MISI */
-.visi-misi{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-}
-.visi-misi .card{
-  background:#fff;
-  flex:1 1 45%;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-  opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
-}
-.visi-misi .card.active{
-  opacity:1;
-  transform:none;
-}
-.visi-misi .card h4{
-  margin-bottom:12px;
-  color:var(--army);
-}
-.visi-misi .card p{
-  font-size:14px;
-  line-height:1.5;
-}
+.visi-misi{display:flex;gap:30px;flex-wrap:wrap;}
+.visi-misi .card{background:#fff;flex:1 1 45%;padding:25px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.1);opacity:0;transform:translateY(40px);transition:.8s ease;}
+.visi-misi .card.active{opacity:1;transform:none;}
+.visi-misi .card h4{margin-bottom:12px;color:var(--army);}
+.visi-misi .card p{font-size:14px;line-height:1.5;}
+.values{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;}
+.values .value-card{flex:1 1 200px;background:#fff;padding:20px;border-radius:14px;text-align:center;font-weight:bold;box-shadow:0 5px 15px rgba(0,0,0,.1);opacity:0;transform:translateY
+(40px);transition:.8s ease;}
+.values .value-card.active{opacity:1;transform:none;}
 
-/* STRUKTUR ORGANISASI */
-.org-structure{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-.org-structure .member{
-  background:#fff;
-  padding:20px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-  opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
-}
-.org-structure .member.active{
-  opacity:1;
-  transform:none;
-}
-.org-structure .member img{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:10px;
-}
-
-/* NILAI NILAI */
-.values{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-.values .value-card{
-  flex:1 1 200px;
-  background:var(--army-light);
-  padding:20px;
-  border-radius:14px;
-  text-align:center;
-  font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-  opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
-}
-.values .value-card.active{
-  opacity:1;
-  transform:none;
-}
+/* DOKUMENTASI SLIDER */
+.slider-container{position:relative;overflow:hidden;border-radius:18px;margin-top:30px;height:500px;}
+.slider-track{display:flex;transition:transform 0.5s ease-in-out;height:100%;width:100%;}
+.slide{position:relative;text-align:center}
+.slide img{width:100%;height:100%;object-fit:cover;border-radius:18px;cursor:pointer;}
+.slide h3{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;padding:6px 14px;border-radius:12px;font-size:16px}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:#fff;background:rgba(0,0,0,.5);padding:10px;border-radius:50%;cursor:pointer;z-index:1000;user-select:none}
+.arrow.left{left:10px}
+.arrow.right{right:10px}
 
 /* FOOTER */
 footer{
   background:var(--army-dark);
   color:#fff;
-  text-align:center;
-  padding:25px;
+  padding:60px 6% 30px;
 }
-footer a{color:#fff;margin:0 10px;font-size:20px}
+.footer-grid{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:2fr 2fr 1fr;
+  gap:40px;
+}
+.footer-logo{display:flex;gap:15px;align-items:center}
+.footer-logo img{width:60px}
+footer h4{font-weight:600}
+footer p{font-size:14px;line-height:1.6}
+.footer-social a{font-size:20px;margin-right:10px;color:#fff}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px}
 
-/* ANIMASI KEYFRAMES */
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-40px)}
-  to{opacity:1;transform:none}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
 }
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(60px)}
-  to{opacity:1;transform:none}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:16px;
+  object-fit: contain;
+  cursor: zoom-out;
 }
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
+.reveal{opacity:0;transform:translateY(50px);transition:1s}
+.reveal.active{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:900px){
-  .about-section{grid-template-columns:1fr}
-  .visi-misi .card{flex:1 1 100%}
-}
-@media(max-width:480px){
-  .hamburger{display:flex}
-  nav ul{
-    display:none;
-    flex-direction:column;
-    gap:10px;
-    position:absolute;
-    top:60px;
-    left:0;
-    width:100%;
-    background:var(--army-dark);
-    padding:10px;
+  .about{grid-template-columns:1fr}
+  .krida-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{
+    position:absolute;top:60px;left:0;width:100%;
+    background:rgba(47,62,31,.95);
+    flex-direction:column;display:none;
   }
-  nav ul.active{
-    display:flex;
-  }
+  .nav-links.active{display:flex}
+  .nav-links li{text-align:center;padding:12px 0}
+  .mobile-menu{display:block}
 }
 </style>
 </head>
-
 <body>
 
 <nav>
-  <div class="logo">
-    <img src="logo.png">
-    Saka Wira Kartika
-    Koramil 17/Songgom
-  </div>
-    <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
- <ul>
+  <div class="logo"><img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom</div>
+  <div class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Beranda</a></li>
-    <li><a href="profil.html">Profil</a></li>
+    <li><a href="profil.html" class="active">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
     <li><a href="kegiatan.html">Kegiatan</a></li>
     <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="dokumen.html">Dokumen</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
   </ul>
 </nav>
@@ -287,41 +162,38 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 <div class="hero">
   <div>
     <h1>Profil Saka Wira Kartika</h1>
-    <p>Informasi lengkap mengenai sejarah, visi-misi, tujuan, struktur, dan nilai-nilai Saka Wira Kartika Koramil 17 Songgom.</p>
+    <p>Informasi lengkap mengenai sejarah, visi-misi, tujuan, struktur, nilai-nilai, dan dokumentasi per angkatan.</p>
   </div>
 </div>
 
-<!-- SEJARAH -->
-<section id="sejarah" class="reveal">
+<section class="section section-watermark reveal">
   <h2 class="section-title">Sejarah</h2>
   <div class="about-section">
-    <p>Saka Wira Kartika Koramil 17 Songgom didirikan pada 29 Mei 2016, dibina oleh TNI AD untuk membentuk karakter, disiplin, dan semangat bela negara generasi muda. Sejak berdiri, Saka Wira Kartika telah aktif dalam berbagai kegiatan kepemudaan dan pramuka.</p>
-    <img src="a1.jpeg">
+    <p>Saka Wira Kartika Koramil 17 Songgom didirikan pada 29 Mei 2016, dibina oleh TNI AD untuk membentuk karakter, disiplin, dan semangat bela negara generasi muda. Sejak berdiri, Saka Wira 
+
+Kartika telah aktif dalam berbagai kegiatan kepemudaan dan pramuka.</p>
+    <img src="a1.jpeg" onclick="openModal(this.src)">
   </div>
 </section>
 
-<!-- VISI & MISI -->
-<section id="visi-misi" class="reveal">
+<section class="section section-watermark reveal">
   <h2 class="section-title">Visi & Misi</h2>
   <div class="visi-misi">
-    <div class="card">
-      <h4>Visi</h4>
-      <p>Terwujudnya generasi muda yang cinta tanah air, berjiwa patriotisme, disiplin, dan memiliki keterampilan kepramukaan yang unggul dalam bidang matra darat.</p>
-    </div>
-    <div class="card">
-      <h4>Misi</h4>
+    <div class="card"><h4>Visi</h4><p>Terwujudnya generasi muda yang cinta tanah air, berjiwa patriotisme, disiplin, dan memiliki keterampilan kepramukaan yang unggul dalam bidang matra 
+
+darat.</p></div>
+    <div class="card"><h4>Misi</h4>
       <p>1. Pendidikan Karakter: Membentuk anggota menjadi pribadi yang beriman, bertakwa, berakhlaq mulia, berjiwa Pancasila, dan siap bela negara.</p>
       <p>2. Pengembangan Keterampilan: Memberikan pendidikan praktis di bidang matra darat melalui kegiatan nyata, produktif, dan sesuai kondisi wilayah.</p>
       <p>3. Solidaritas & Kebersamaan: Mempererat rasa kekeluargaan dan kebersamaan antar anggota.</p>
       <p>4. Kedisiplinan & Tanggung Jawab: Meningkatkan rasa tanggung jawab dan disiplin anggota.</p>
-      <p>5. Pengabdian Masyarakat: Menggerakkan anggota agar peduli dan tanggap terhadap masalah sosial dan lingkungan.</p> 
+      <p>5. Pengabdian Masyarakat: Menggerakkan anggota agar peduli dan tanggap terhadap masalah sosial dan lingkungan.</p>
       <p>6. Implementasi Nilai: Menjunjung tinggi nilai-nilai Trisatya dan Dasadharma dalam setiap kegiatan.</p>
     </div>
   </div>
 </section>
 
-<!-- TUJUAN -->
-<section id="tujuan" class="reveal">
+<section class="section section-watermark reveal">
   <h2 class="section-title">Tujuan</h2>
   <div class="values">
     <div class="value-card">Membentuk Karakter dan Bela Negara</div>
@@ -332,8 +204,7 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   </div>
 </section>
 
-<!-- NILAI NILAI -->
-<section id="nilai" class="reveal">
+<section class="section section-watermark reveal">
   <h2 class="section-title">Nilai-Nilai</h2>
   <div class="values">
     <div class="value-card">Disiplin</div>
@@ -343,43 +214,133 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   </div>
 </section>
 
+<section class="section reveal">
+  <h2 class="section-title">Dokumentasi Angkatan</h2>
+  <div class="slider-container">
+    <div class="arrow left" onclick="prevSlide()">&#10094;</div>
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide"><img src="ang 1.jpeg" onclick="openModal(this.src)"><h3>Angkatan 1</h3></div>
+      <div class="slide"><img src="ang 2.jpeg" onclick="openModal(this.src)"><h3>Angkatan 2</h3></div>
+      <div class="slide"><img src="ang 3.jpeg" onclick="openModal(this.src)"><h3>Angkatan 3</h3></div>
+      <div class="slide"><img src="ang 4.jpeg" onclick="openModal(this.src)"><h3>Angkatan 4</h3></div>
+      <div class="slide"><img src="long 4.jpeg" onclick="openModal(this.src)"><h3>Angkatan 5</h3></div>
+      <div class="slide"><img src="ang 6.jpeg" onclick="openModal(this.src)"><h3>Angkatan 6</h3></div>
+      <div class="slide"><img src="ang 7.jpeg" onclick="openModal(this.src)"><h3>Angkatan 7</h3></div>
+      <div class="slide"><img src="ang 8.jpeg" onclick="openModal(this.src)"><h3>Angkatan 8</h3></div>
+      <div class="slide"><img src="ang 9.jpeg" onclick="openModal(this.src)"><h3>Angkatan 9</h3></div>
+      <div class="slide"><img src="hero.jpg" onclick="openModal(this.src)"><h3>Angkatan 10</h3></div>
+    </div>
+    <div class="arrow right" onclick="nextSlide()">&#10095;</div>
+  </div>
+</section>
+
 <footer>
-  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
-  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
-  <a href="https://share.google/y0gtnYcfpG4mVWAOg"><i class="fab fa-tiktok"></i></a>
-  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
-  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.png">
+      <div>
+        <h4>Saka Wira Kartika</h4>
+        <p>Koramil 17/Songgom</p>
+        <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
+      </div>
+    </div>
+    <div>
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+    </div>
+    <div class="footer-social">
+      <h4>Kontak</h4>
+      <p>085728346631 (Kak Adam)</p>
+      <p>083121794805 (Kak Janah)</p>
+      <p>088980219635 (Kak Sinta)</p>
+      <h4>Media Sosial</h4>
+      <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+      <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@sakawirakartika17songgom"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/@sakawirakartikakoramil17sgm"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Saka Wira Kartika Koramil 17/Songgom</div>
 </footer>
 
+<div class="modal" id="modal" onclick="closeModal()"><img id="modalImg"></div>
+
 <script>
-/* reveal scroll */
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-100){
-      el.classList.add("active");
-    }
+document.addEventListener("DOMContentLoaded", function(){
+
+  // Animasi reveal
+  const reveals=document.querySelectorAll(".reveal");
+  window.addEventListener("scroll",()=>{
+    reveals.forEach(el=>{
+      if(el.getBoundingClientRect().top < window.innerHeight-100){
+        el.classList.add("active");
+      }
+    });
   });
-});
 
-/* visi-misi, values, org stagger */
-const cards=document.querySelectorAll(".card,.value-card,.member");
-cards.forEach((c,i)=>{
-  setTimeout(()=>c.classList.add("active"),200*i);
-});
+  const cards=document.querySelectorAll(".card,.value-card");
+  cards.forEach((c,i)=>{setTimeout(()=>c.classList.add("active"),200*i);});
 
-const hamburger = document.getElementById("hamburger");
-const navUl = document.querySelector("nav ul");
+  // Hamburger menu
+  const hamburger = document.getElementById("menuToggle");
+  const navUl = document.querySelector("nav ul");
+  hamburger.addEventListener("click", ()=>{navUl.classList.toggle("active");});
 
-hamburger.addEventListener("click", ()=>{
-  navUl.classList.toggle("active");
+  // Modal
+  function openModal(src){
+    document.getElementById("modalImg").src = src;
+    document.getElementById("modal").style.display = "flex";
+  }
+  function closeModal(){
+    document.getElementById("modal").style.display = "none";
+  }
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+
+  // Slider
+  const sliderTrack = document.getElementById("sliderTrack");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  // Atur lebar track & slide
+  sliderTrack.style.width = `${slides.length * 100}%`;
+  slides.forEach(slide => slide.style.width = `${100 / slides.length}%`);
+
+  function updateSlide(){
+    sliderTrack.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+  }
+
+  window.nextSlide = function(){
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide();
+  }
+
+  window.prevSlide = function(){
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide();
+  }
+
+  // Auto slide setiap 3 detik
+  let autoSlide = setInterval(nextSlide, 3000);
+
+  // Hentikan sementara saat user klik manual
+  const arrows = document.querySelectorAll(".arrow");
+  arrows.forEach(arrow=>{
+    arrow.addEventListener("click", ()=>{
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 3000);
+    });
+  });
+
+  // Swipe support
+  let startX = 0;
+  sliderTrack.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  sliderTrack.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if(endX < startX - 50) nextSlide();
+    if(endX > startX + 50) prevSlide();
+  });
+
 });
 </script>
-
 </body>
-
 </html>
-
-
-
-
