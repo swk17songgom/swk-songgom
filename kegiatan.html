@@ -22,56 +22,14 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:#222}
 
-/* NAVBAR */
-nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(47,62,31,.95);
-  padding:12px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  animation:fadeDown 1s ease;
-}
-nav ul{
-  display:flex;
-  gap:20px;
-  list-style:none;
-}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-}
-nav a:hover{
-  color:var(--gold);
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-  color:#fff;
-}
-.logo img{
-  width:36px;
-}
-
-/* Hamburger mobile */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
-}
-.hamburger span{
-  display:block;
-  width:25px;
-  height:3px;
-  background:#fff;
-  border-radius:2px;
-}
+/* NAV */
+nav{position:sticky;top:0;z-index:9999;background:rgba(47,62,31,.95);padding:12px 6%;display:flex;justify-content:space-between;align-items:center;}
+nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold}nav .logo img{width:36px}
+.nav-links{display:flex;list-style:none;gap:10px}
+.nav-links a{color:#fff;text-decoration:none;padding:12px 14px;border-radius:15px;transition:.3s;font-size:14px;}
+.nav-links a:hover,
+.nav-links a.active{background:var(--gold);color:#000}
+.mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 
 /* HERO */
 .hero{
@@ -162,11 +120,29 @@ section{padding:60px 6%}
 footer{
   background:var(--army-dark);
   color:#fff;
-  text-align:center;
-  padding:25px;
+  padding:60px 6% 30px;
 }
-footer a{color:#fff;margin:0 10px;font-size:20px}
+.footer-grid{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:2fr 2fr 1fr;
+  gap:40px;
+}
+.footer-logo{display:flex;gap:15px;align-items:center}
+.footer-logo img{width:60px}
+footer h4{font-weight:600}
+footer p{font-size:14px;line-height:1.6}
+.footer-social a{font-size:20px;margin-right:10px;color:#fff}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px}
 
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.8);
+  justify-content:center;align-items:center;
+  z-index:10000;
+}
+.modal img{max-width:90%;max-height:90%;border-radius:16px}
+	
 /* ANIMASI KEYFRAMES */
 @keyframes fadeDown{
   from{opacity:0;transform:translateY(-40px)}
@@ -184,23 +160,14 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 /* RESPONSIVE */
 @media(max-width:900px){
   .kegiatan-item .photos{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:480px){
-  .hamburger{display:flex}
-  nav ul{
-    display:none;
-    flex-direction:column;
-    gap:10px;
-    position:absolute;
-    top:60px;
-    left:0;
-    width:100%;
-    background:var(--army-dark);
-    padding:10px;
+  .nav-links{
+    position:absolute;top:60px;left:0;width:100%;
+    background:rgba(47,62,31,.95);
+    flex-direction:column;display:none;
   }
-  nav ul.active{
-    display:flex;
-  }
+  .nav-links.active{display:flex}
+  .nav-links li{text-align:center;padding:12px 0}
+  .mobile-menu{display:block}
 }
 </style>
 </head>
@@ -209,21 +176,16 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 
 <nav>
   <div class="logo">
-    <img src="logo.png">
-    Saka Wira Kartika
-    Koramil 17/Songgom
+    <img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom
   </div>
-	  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul>
+  <div class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Beranda</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
-    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="kegiatan.html"class="active">Kegiatan</a></li>
     <li><a href="prestasi.html">Prestasi</a></li>
+	<li><a href="dokumen.html">Dokumen</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
   </ul>
 </nav>
@@ -244,12 +206,12 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Perkemahan Bakti Saka Wira Kartika tingkat Korem 071/Wijayakusuma.</p>
       <div class="photos">
-        <img src="pert 1.jpeg">
-        <img src="pert 2.jpeg">
-        <img src="pert 3.jpeg">
-	<img src="pert 4.jpeg">
-	<img src="pert 5.jpeg">
-	<img src="pert 6.jpeg">
+        <img src="pert 1.jpeg"onclick="openModal(this.src)">
+        <img src="pert 2.jpeg"onclick="openModal(this.src)">
+        <img src="pert 3.jpeg"onclick="openModal(this.src)">
+	<img src="pert 4.jpeg"onclick="openModal(this.src)">
+	<img src="pert 5.jpeg"onclick="openModal(this.src)">
+	<img src="pert 6.jpeg"onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -260,12 +222,12 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Perkemahan Bakti Saka Wira Kartika tingkat Kodim 0713/Brebes.</p>
       <div class="photos">
-        <img src="kod 1.jpeg">
-        <img src="kod 2.jpeg">
-        <img src="kod 3.jpeg">
-	<img src="kod 4.jpeg">
-	<img src="kod 5.jpeg">
-	<img src="kod 6.jpeg">
+        <img src="kod 1.jpeg" onclick="openModal(this.src)">
+        <img src="kod 2.jpeg" onclick="openModal(this.src)">
+        <img src="kod 3.jpeg" onclick="openModal(this.src)">
+	<img src="kod 4.jpeg" onclick="openModal(this.src)">
+	<img src="kod 5.jpeg" onclick="openModal(this.src)">
+	<img src="kod 6.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -276,10 +238,10 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Long March sebagai rangkaian kegiatan dalam pelantikan Dewan Saka.</p>
       <div class="photos">
-        <img src="long 1.jpeg">
-        <img src="long 2.jpeg">
-        <img src="long 3.jpeg">
-	<img src="long 4.jpeg">
+        <img src="long 1.jpeg" onclick="openModal(this.src)">
+        <img src="long 2.jpeg" onclick="openModal(this.src)">
+        <img src="long 3.jpeg" onclick="openModal(this.src)">
+	<img src="long 4.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -290,11 +252,11 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Penanaman pohon di area lapangan tembak bersama dengan personel TNI Kodim 0713/Brebes.</p>
       <div class="photos">
-        <img src="pohon 1.jpeg">
-        <img src="pohon 2.jpeg">
-        <img src="pohon 3.jpeg">
-	<img src="pohon 4.jpeg">
-	<img src="pohon 5.jpeg">
+        <img src="pohon 1.jpeg" onclick="openModal(this.src)">
+        <img src="pohon 2.jpeg" onclick="openModal(this.src)">
+        <img src="pohon 3.jpeg" onclick="openModal(this.src)">
+	<img src="pohon 4.jpeg" onclick="openModal(this.src)">
+	<img src="pohon 5.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -305,10 +267,10 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Pemebinaan Wawasan Kebangsaan bertempat di Kodim 0713/Brebes.</p>
       <div class="photos">
-        <img src="wasbang 1.jpeg">
-        <img src="wasbang 2.jpeg">
-        <img src="wasbang 3.jpeg">
-	<img src="wasbang 4.jpeg">
+        <img src="wasbang 1.jpeg" onclick="openModal(this.src)">
+        <img src="wasbang 2.jpeg" onclick="openModal(this.src)">
+        <img src="wasbang 3.jpeg" onclick="openModal(this.src)">
+	<img src="wasbang 4.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -319,14 +281,14 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Buka Bersama dan Sahur Bersama disertai kegiatan pembagian takjil, pentas kreasi dan silaturahmi antar purna.</p>
       <div class="photos">
-        <img src="bs 1.jpeg">
-        <img src="bs 2.jpeg">
-        <img src="bs 3.jpeg">
-	<img src="bs 4.jpeg">
-	<img src="bs 5.jpeg">
-        <img src="bs 6.jpeg">
-        <img src="bs 7.jpeg">
-	<img src="bs 8.jpeg">
+        <img src="bs 1.jpeg" onclick="openModal(this.src)">
+        <img src="bs 2.jpeg" onclick="openModal(this.src)">
+        <img src="bs 3.jpeg" onclick="openModal(this.src)">
+	<img src="bs 4.jpeg" onclick="openModal(this.src)">
+	<img src="bs 5.jpeg" onclick="openModal(this.src)">
+        <img src="bs 6.jpeg" onclick="openModal(this.src)">
+        <img src="bs 7.jpeg" onclick="openModal(this.src)">
+	<img src="bs 8.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -337,16 +299,16 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Lomba PBB Variasi dan Pentas Kreasi Pramuka dalam rangka Peringatan HUT ke - 16 Saka Wira Kartika.</p>
       <div class="photos">
-        <img src="lom 1.jpeg">
-        <img src="lom 2.jpeg">
-        <img src="lom 3.jpeg">
-	<img src="lom 4.jpeg">
-	<img src="lom 5.jpeg">
-        <img src="lom 6.jpeg">
-        <img src="lom 7.jpeg">
-	<img src="lom 8.jpeg">
-	<img src="lom 9.jpeg">
-	<img src="lom 10.jpeg">
+        <img src="lom 1.jpeg" onclick="openModal(this.src)">
+        <img src="lom 2.jpeg" onclick="openModal(this.src)">
+        <img src="lom 3.jpeg" onclick="openModal(this.src)">
+	<img src="lom 4.jpeg" onclick="openModal(this.src)">
+	<img src="lom 5.jpeg" onclick="openModal(this.src)">
+        <img src="lom 6.jpeg" onclick="openModal(this.src)">
+        <img src="lom 7.jpeg" onclick="openModal(this.src)">
+	<img src="lom 8.jpeg" onclick="openModal(this.src)">
+	<img src="lom 9.jpeg" onclick="openModal(this.src)">
+	<img src="lom 10.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -357,13 +319,27 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <div class="content">
       <p>Kegiatan Pembelajaran dan praktek 5 krida langsung di alam.</p>
       <div class="photos">
-        <img src="ja 1.jpeg">
-        <img src="ja 2.jpeg">
-        <img src="ja 3.jpeg">
-	<img src="ja 4.jpeg">
-	<img src="ja 5.jpeg">
-        <img src="ja 6.jpeg">
-        <img src="ja 7.jpeg">
+        <img src="ja 1.jpeg" onclick="openModal(this.src)">
+        <img src="ja 2.jpeg" onclick="openModal(this.src)">
+        <img src="ja 3.jpeg" onclick="openModal(this.src)">
+	<img src="ja 4.jpeg" onclick="openModal(this.src)">
+	<img src="ja 5.jpeg" onclick="openModal(this.src)">
+        <img src="ja 6.jpeg" onclick="openModal(this.src)">
+        <img src="ja 7.jpeg" onclick="openModal(this.src)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contoh Kegiatan 9 -->
+  <div class="kegiatan-item">
+    <h3>Pertiwika Tingkat Kodam IV Diponegoro</h3>
+    <div class="content">
+      <p>Perkemahan Bakti Saka Wira Kartika tingkat Kodam IV Diponegoro.</p>
+      <div class="photos">
+        <img src="smg 1.jpeg" onclick="openModal(this.src)">
+        <img src="smg 2.jpeg" onclick="openModal(this.src)">
+        <img src="smg 3.jpeg" onclick="openModal(this.src)">
+	<img src="smg 4.jpeg" onclick="openModal(this.src)">
       </div>
     </div>
   </div>
@@ -371,32 +347,52 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 </section>
 
 <footer>
-  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
-  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
-  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
- <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.png">
+      <div>
+        <h4>Saka Wira Kartika</h4>
+        <p>Koramil 17/Songgom</p>
+        <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
+      </div>
+    </div>
+    <div>
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed"width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+    </div>
+    <div class="footer-social">
+      <h4>Kontak</h4>
+      <p>083151352929 (Kak Dani)</p>
+      <h4>Media Sosial</h4>
+      <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+      <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@sakawirakartika17songgom"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/@sakawirakartikakoramil17sgm"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Saka Wira Kartika Koramil 17/Songgom</div>
 </footer>
 
-<script>
-const reveals=document.querySelectorAll(".reveal, .kegiatan-item");
-window.addEventListener("scroll",()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-100){
-      el.classList.add("active");
-    }
-  });
-});
-const hamburger = document.getElementById("hamburger");
-const navUl = document.querySelector("nav ul");
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
 
-hamburger.addEventListener("click", ()=>{
-  navUl.classList.toggle("active");
+<script>
+document.getElementById("menuToggle").onclick = ()=>{document.getElementById("navLinks").classList.toggle("active");
+};
+function openModal(src){
+  document.getElementById("modalImg").src = src;document.getElementById("modal").style.display = "flex";}
+function closeModal(){
+  document.getElementById("modal").style.display = "none";}
+
+// Scroll reveal animation
+const reveals = document.querySelectorAll(".reveal, .krida-item");window.addEventListener("scroll", () => {reveals.forEach(el => {if(el.getBoundingClientRect().top < window.innerHeight - 100){el.classList.add("active");}
+  });
 });
 </script>
 
 </body>
 
 </html>
+
 
 
