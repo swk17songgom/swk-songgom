@@ -132,10 +132,19 @@ section{padding:60px 6%}
 footer{
   background:var(--army-dark);
   color:#fff;
-  text-align:center;
-  padding:25px;
+  padding:60px 6% 30px;
 }
-footer a{color:#fff;margin:0 10px;font-size:20px}
+.footer-grid{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:2fr 2fr 1fr;
+  gap:40px;
+}
+.footer-logo{display:flex;gap:15px;align-items:center}
+.footer-logo img{width:60px}
+footer h4{font-weight:600}
+footer p{font-size:14px;line-height:1.6}
+.footer-social a{font-size:20px;margin-right:10px;color:#fff}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px
 
 /* ANIMASI KEYFRAMES */
 @keyframes fadeDown{
@@ -188,18 +197,14 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
     <img src="logo.png">
     Saka Wira Kartika
     Koramil 17/Songgom
-  </div>
-    <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-    <ul>
+    <div class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Beranda</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
     <li><a href="kegiatan.html">Kegiatan</a></li>
     <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="dokumen.html">Dokumen</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
   </ul>
 </nav>
@@ -344,6 +349,7 @@ hamburger.addEventListener("click", ()=>{
 </body>
 
 </html>
+
 
 
 
