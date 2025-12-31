@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil - Saka Wira Kartika Koramil 17 Songgom</title>
-<meta name="description" content="Website resmi Saka Wira Kartika Koramil 17 Songgom. profil, krida, kegiatan, prestasi, dan pendaftaran anggota.">
+<title>Saka Wira Kartika Koramil 17 Songgom</title>
+<meta name="description" content="Website resmi Saka Wira Kartika Koramil 17 Songgom. profil, krida, kegiatan, prestasi, dokumen, dan pendaftaran anggota.">
 <meta name="keywords" content="Saka Wira Kartika, Pramuka, Koramil 17 Songgom, Krida, Kegiatan, Prestasi">
 <meta name="author" content="Saka Wira Kartika Koramil 17 Songgom.">
 
@@ -15,7 +15,6 @@
 :root{
   --army:#3f5224;
   --army-dark:#2f3e1f;
-  --army-light:#cdd8b0;
   --gold:#d4af37;
   --bg:#f4f5f0;
 }
@@ -26,126 +25,213 @@ body{background:var(--bg);color:#222}
 
 /* NAVBAR */
 nav{
-  position:sticky;top:0;z-index:1000;
+  position:sticky;top:0;z-index:999;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
   display:flex;justify-content:space-between;align-items:center;
-  transition:.3s;
 }
-nav.scrolled{box-shadow:0 4px 10px rgba(0,0,0,.3)}
 nav .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
 nav .logo img{width:36px}
-nav ul{display:flex;gap:20px;list-style:none}
-nav ul li a{color:#fff;text-decoration:none;font-size:14px}
-nav ul li a:hover{color:var(--gold)}
-/* Mobile menu */
-.mobile-menu{
-  display:none;
-  font-size:24px;
-  color:#fff;
-  cursor:pointer;
+nav ul{display:flex;gap:10px;list-style:none}
+nav ul li a{
+  color:#fff;text-decoration:none;font-size:14px;
+  padding:12px 14px;border-radius:15px;
+  transition:.3s;
 }
+nav ul li a.active,
+nav ul li a:hover{
+  background:var(--gold);
+  color:#000;
+}
+.mobile-menu{display:none;color:#fff;font-size:22px}
 
 /* HERO */
 .hero{
   height:85vh;
   background:
-    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),
-    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80');
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
   background-size:cover;
   background-position:center;
-  display:flex;align-items:center;padding:0 6%;color:#fff;
+  display:flex;align-items:center;
+  padding:0 6%;color:#fff;
 }
-.hero h1{
-  font-size:42px;
-  margin-bottom:10px;
-  opacity:0;transform:translateY(50px);
-  animation:slideUp 1s forwards;
-}
-.hero p{
-  max-width:520px;
-  line-height:1.6;
-  opacity:0;transform:translateY(50px);
-  animation:fadeUp 1s forwards;
-  animation-delay:.3s;
-}
+.hero h1{font-size:42px;margin-bottom:10px;animation:fadeUp 1s}
+.hero p{max-width:520px;line-height:1.6;animation:fadeUp 1.4s}
 
 /* SECTION */
-section{padding:80px 6%}
+.section{padding:90px 6%;position:relative}
 .section-title{
   font-size:26px;margin-bottom:30px;
   border-left:6px solid var(--army);
   padding-left:12px;
 }
 
+/* WATERMARK */
+.section-watermark{
+  overflow:hidden;
+}
+.section-watermark::before{
+  content:"";
+  position:absolute;inset:0;
+  background:url("logo.png");
+  background-size:160px;
+  background-repeat:repeat;
+  opacity:.04;
+  transform:rotate(-12deg);
+  z-index:0;
+}
+.section-watermark > *{
+  position:relative;z-index:2;
+}
+
+/* GREEN SECTION */
+.section-green{
+  background:linear-gradient(135deg,var(--army),var(--army-dark));
+  color:#fff;
+}
+
 /* ABOUT */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.about img{width:100%;border-radius:18px;transform:rotate(-3deg);box-shadow:0 10px 25px rgba(0,0,0,.3);}
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:center;
+}
+.about img{width:100%;border-radius:18px;cursor:pointer;transform:rotate(-3deg);box-shadow:0 10px 25px rgba(0,0,0,.3);}
+}
+.about img:hover{transform:scale(1.05)}
 
 /* KRIDA */
-.krida-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
-.krida-card{
-  background:#fff;padding:25px 15px;border-radius:14px;text-align:center;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-  opacity:0;transform:translateY(40px);transition:.8s ease;
+.krida-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
 }
-.krida-card.active{opacity:1;transform:none}
-.krida-card i{font-size:32px;color:var(--army);margin-bottom:10px}
-.krida-card h4{font-size:14px}
+.krida-card{
+  background:rgba(255,255,255,.9);
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+  cursor:pointer;
+  transition:.4s;
+  color:#080000;
+}
+.krida-card:hover{transform:translateY(-8px)}
+.krida-card img{width:50px;margin-bottom:10px}
 
 /* BERITA */
-.berita-list{display:flex;flex-direction:column;gap:15px}
+.berita-list{display:grid;gap:15px}
 .berita-item{
-  display:flex;gap:15px;align-items:center;background:#fff;padding:12px;
-  border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.1);
-  transition:.3s;
+  display:flex;gap:15px;
+  background:rgba(255,255,255,.85);
+  padding:14px;border-radius:14px;
+  text-decoration:none;color:#000;
+  transition:.3s;x; 
 }
 .berita-item:hover{transform:translateX(6px)}
-.berita-item img{width:120px;height:80px;object-fit:cover;border-radius:10px}
-.berita-item h4{font-size:15px}
+.berita-item img{
+  width:120px;height:80px;
+  object-fit:cover;border-radius:10px;
+}
 .berita-item span{font-size:12px;color:#666}
+.berita-card{
+  display:inline-block;
+  margin-top:20px;
+  background:var(--gold);
+  color:#000;
+  padding:12px 6%;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  text-align:center;
+}
+.berita-card:hover{transform:translateY(-5px)}
 
 /* PRESTASI */
 .prestasi-box{
-  background:#fff;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  background:rgba(255,255,255,.9);
+  padding:30px;border-radius:18px;
+  color:#080000;
 }
 
 /* GABUNG */
 .join{
-  background:linear-gradient(135deg,var(--army),var(--army-dark));
-  color:#fff;
-  padding:60px 20px;text-align:center;border-radius:20px;
+  text-align:center;
 }
 .join a{
-  display:inline-block;margin-top:20px;background:var(--gold);
-  color:#000;padding:14px 30px;border-radius:30px;font-weight:bold;text-decoration:none;
+  display:inline-block;
+  margin-top:20px;
+  background:var(--gold);
+  color:#000;
+  padding:14px 30px;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
 }
+.join-card:hover{transform:translateY(-5px)}
 
 /* FOOTER */
-footer{background:var(--army-dark);color:#fff;text-align:center;padding:30px}
-footer a{color:#fff;margin:0 10px;font-size:20px}
+footer{
+  background:var(--army-dark);
+  color:#fff;
+  padding:60px 6% 30px;
+  font-weight:400;
+}
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 2fr 1fr;
+  gap:40px;
+}
+.footer-col h4{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.footer-col p{
+  font-size:14px;
+  font-weight:400;
+  line-height:1.6;
+}
+.footer-social a{
+  font-size:20px;
+  margin-right:12px;
+}
+.footer-logo{display:flex;gap:15px;align-items:center}
+.footer-logo img{width:60px}
+.footer a{color:#fff;text-decoration:none}
+.footer-social a{font-size:20px;margin-right:10px}
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  font-size:13px;
+}
 
-/* ANIMATIONS */
-@keyframes slideUp{to{opacity:1;transform:none}}
-@keyframes fadeUp{to{opacity:1;transform:none}}
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.8);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:16px;
+}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(60px);transition:1s ease;}
-.reveal.active{opacity:1;transform:none;}
+/* ANIM */
+.reveal{opacity:0;transform:translateY(50px);transition:1s}
+.reveal.active{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 
-/* RESPONSIVE */
 @media(max-width:900px){
   .about{grid-template-columns:1fr}
   .krida-grid{grid-template-columns:repeat(2,1fr)}
+  nav ul{display:none}
   .mobile-menu{display:block}
-  nav ul{display:none;flex-direction:column;width:100%;background:var(--army);position:absolute;top:60px;left:0;padding:10px; border-radius:0 0 10px 10px;}
-  nav ul.active{display:flex}
-}
-@media(max-width:480px){
-  .hero h1{font-size:30px}
 }
 </style>
 </head>
@@ -154,149 +240,163 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 
 <nav>
   <div class="logo">
-    <img src="logo.png">
-    Saka Wira Kartika
-    Koramil 17/Songgom
+    <img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom
   </div>
   <i class="fas fa-bars mobile-menu"></i>
   <ul>
-    <li><a href="index.html">Beranda</a></li>
+    <li><a href="index.html" class="active">Beranda</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
-    <li><a href="kegiatan.html">Kegiatan</a></li>
+    <li><a href="berita.html">Berita</a></li>
     <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="dokumen.html">Dokumen</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
   </ul>
 </nav>
 
-<div class="hero">
+<!-- HERO -->
+<div class="hero" id="hero">
   <div>
     <h1>Saka Wira Kartika</h1>
     <p>Wadah pembinaan generasi muda dalam bela negara, disiplin, dan keterampilan.</p>
   </div>
 </div>
 
-<section id="profil" class="reveal">
+<!-- TENTANG -->
+<section id="profil" class="section section-watermark reveal">
   <h2 class="section-title">Tentang Kami</h2>
   <div class="about">
-    <p>Saka Wira Kartika Koramil 17/Songgom adalah wadah bagi generasi muda yang  berkomitmen untuk membentuk generasi yang  berkarakter, disiplin, dan siap menghadapi tantangan dengan jiwa kepemimpinan dan nasionalisme.</p>
-    <img src="hero.jpg">
+    <div>
+      <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah wadah bagi generasi muda yang  berkomitmen untuk membentuk generasi yang  berkarakter, disiplin, dan siap menghadapi tantangan dengan 
+
+jiwa kepemimpinan dan nasionalisme.</p>
+    </div>
+    <img src="hero.jpg" onclick="openModal(this.src)">
   </div>
 </section>
 
-<section id="krida" class="reveal">
+<!-- KRIDA -->
+<section id="krida" class="section section-green reveal">
   <h2 class="section-title">Krida</h2>
   <div class="krida-grid">
-    <div class="krida-card">
-    <img src="navrat.jpg"
-    alt="Navigasi darat"
-    style="width:50px;height:50px;margin-bottom:10px;">
-    <h4>Navigasi Darat</h4>
-    </div>
-
-    <div class="krida-card">
-    <img src="pionerring.jpg"
-    alt="Pioneering"
-    style="width:50px;height:50px;margin-bottom:10px;">
-    <h4>Pioneering</h4>
-    </div>
-    <div class="krida-card">
-    <img src="mountainering.jpg"
-    alt="Mountainering"
-    style="width:50px;height:50px;margin-bottom:10px;">
-    <h4>Mountainering</h4>
-    </div>
-    <div class="krida-card">
-    <img src="survival.jpg"
-    alt="Survival"
-    style="width:50px;height:50px;margin-bottom:10px;">
-    <h4>Survival</h4>
-    </div>
-    <div class="krida-card">
-    <img src="pba.jpg"
-    alt="Penanggulangan Bencana Alam"
-    style="width:50px;height:50px;margin-bottom:10px;">
-    <h4>Penanggulangan Bencana</h4>
-   </div>
+    <div class="krida-card" onclick="openModal('navrat.jpg')"><img src="navrat.jpg"><h4>Navigasi Darat</h4></div>
+    <div class="krida-card" onclick="openModal('pionerring.jpg')"><img src="pionerring.jpg"><h4>Pioneering</h4></div>
+    <div class="krida-card" onclick="openModal('mountainering.jpg')"><img src="mountainering.jpg"><h4>Mountainering</h4></div>
+    <div class="krida-card" onclick="openModal('survival.jpg')"><img src="survival.jpg"><h4>Survival</h4></div>
+    <div class="krida-card" onclick="openModal('pba.jpg')"><img src="pba.jpg"><h4>Penanggulangan Bencana</h4></div>
   </div>
 </section>
 
-<section id="berita" class="reveal">
+<!-- BERITA -->
+<section id="berita" class="section section-watermark reveal">
   <h2 class="section-title">Berita</h2>
   <div class="berita-list">
     <a href="https://share.google/XY0dHdOYJjCmwhAIO" target="_blank" class="berita-item">
       <img src="a1.jpeg">
       <div>
-        <h4>Mencetak Generasi Berkarakter: Kiprah Saka Wira Kartika Koramil 17/Songgom dalam Pembinaan Pemuda Brebes
+      <h4>Mencetak Generasi Berkarakter: Kiprah Saka Wira Kartika Koramil 17/Songgom dalam Pembinaan Pemuda Brebes
 
 
 
 </h4>
-        <span>Sumber: Kompasiana</span>
+      <span>Sumber: Kompasiana</span>
       </div>
-    </a>
-    <a href="https://share.google/qdZEcdckZeqcEL6wl" target="_blank" class="berita-item">
+      </a>
+      <a href="https://share.google/qdZEcdckZeqcEL6wl" target="_blank" class="berita-item">
       <img src="beritaa.jpg">
       <div>
-        <h4>Saka Wira Kartika Koramil 17/Songgom Gelar Pelantikan Dewan Saka Periode 2025, Meriah dengan Longmarch & Upacara Resmi</h4>
-        <span>Sumber: Kompasiana</span>
+      <h4>Saka Wira Kartika Koramil 17/Songgom Gelar Pelantikan Dewan Saka Periode 2025, Meriah dengan Longmarch & Upacara Resmi</h4>
+      <span>Sumber: Kompasiana</span>
       </div>
-    </a>
-<a href="https://share.google/sjAGKpHL2ZuxnJjHV" target="_blank" class="berita-item">
+      </a>
+      <a href="https://share.google/sjAGKpHL2ZuxnJjHV" target="_blank" class="berita-item">
       <img src="berita.jpg">
       <div>
-        <h4>Latihan Rutin Saka Wira Kartika Koramil 17/Songgom: Awal Perjalanan Dewan Baru
+      <h4>Latihan Rutin Saka Wira Kartika Koramil 17/Songgom: Awal Perjalanan Dewan Baru
 
 
 
 </h4>
-        <span>Sumber: Kompasiana</span>
+      <span>Sumber: Kompasiana</span>
       </div>
-    </a>
-<a href="https://share.google/2uNiatfWqndQlqyv6" target="_blank" class="berita-item">
+      </a>
+      <a href="https://share.google/2uNiatfWqndQlqyv6" target="_blank" class="berita-item">
       <img src="berita 2020.jpg">
       <div>
-        <h4>Pramuka SWK Songgom Brebes, Long Mars dan Bersih-bersih Sampah di Parin
+      <h4>Pramuka SWK Songgom Brebes, Long Mars dan Bersih-bersih Sampah di Parin
 
 
 
 </h4>
-        <span>Sumber: korem071.tni-ad.mil.id/</span>
+      <span>Sumber: korem071.tni-ad.mil.id/</span>
       </div>
-    </a>
-  </div>
+      </a>
+      <a class="berita-card" href="berita.html">Selengkapnya...</a>
+      </div>
+      
 </section>
-
-<section id="prestasi" class="reveal">
+<!-- PRESTASI -->
+<section id="prestasi" class="section section-green reveal">
   <h2 class="section-title">Prestasi</h2>
   <div class="prestasi-box">
-    Prestasi lomba tingkat korem, lomba tingkat kodim, dan penghargaan lainnya.
+    Prestasi lomba tingkat Kodim, Korem, serta kegiatan kepramukaan lainnya.
   </div>
 </section>
 
-<section id="gabung" class="reveal">
+<!-- GABUNG -->
+<section id="gabung" class="section section-watermark reveal">
   <div class="join">
     <h2>Gabung Saka Wira Kartika</h2>
     <p>Pendaftaran melalui Google Form</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog" target="_blank">Gabung Sekarang</a>
+    <a class="join-card" href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung Sekarang</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.png">
+      <div>
+        <h4>Saka Wira Kartika</h4>
+        <p>Koramil 17/Songgom</p>
+        <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
+      </div>
+    </div>
+    <div>
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="120" style="border-radius:12px;border:0"></iframe>
+    </div>
+    <div class="footer-social">
+      <h4>Kontak</h4>
+      <p>085728346631 (Kak Adam)</p>
+      <p>083121794805 (Kak Janah)</p>
+      <p>088980219635 (Kak Sinta)</p>
+      <h4>Media Sosial</h4>
     <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
-  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
-  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
-  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+    <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+    <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Saka Wira Kartika Koramil 17/Songgom
+  </div>
 </footer>
 
-<script>
-// mobile menu toggle
-const menuBtn=document.querySelector(".mobile-menu");
-const navUl=document.querySelector("nav ul");
-menuBtn.addEventListener("click",()=>{navUl.classList.toggle("active");});
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
 
-// reveal scroll
+<script>
+function openModal(src){
+  document.getElementById("modalImg").src=src;
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
 const reveals=document.querySelectorAll(".reveal");
 window.addEventListener("scroll",()=>{
   reveals.forEach(el=>{
@@ -305,14 +405,7 @@ window.addEventListener("scroll",()=>{
     }
   });
 });
-
-// krida stagger animation
-const krida=document.querySelectorAll(".krida-card");
-krida.forEach((card,i)=>{
-  setTimeout(()=>card.classList.add("active"),200*i);
-});
 </script>
 
 </body>
 </html>
-
