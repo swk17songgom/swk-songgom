@@ -21,24 +21,31 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:#222}
 
-/* NAV */
+/* NAVBAR */
 nav{
   position:sticky;top:0;z-index:9999;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
   display:flex;justify-content:space-between;align-items:center;
 }
-nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold}
+nav .logo{
+  display:flex;gap:10px;align-items:center;
+  color:#fff;font-weight:bold;font-size:14px;
+}
 nav .logo img{width:36px}
 
-.nav-links{display:flex;list-style:none;gap:10px}
+.nav-links{
+  display:flex;gap:10px;list-style:none;
+}
 .nav-links a{
   color:#fff;text-decoration:none;
-  padding:12px 14px;border-radius:15px;
-  transition:.3s;font-size:14px;
+  padding:12px 14px;border-radius:14px;
+  font-size:14px;transition:.3s;
 }
 .nav-links a:hover,
-.nav-links a.active{background:var(--gold);color:#000}
+.nav-links a.active{
+  background:var(--gold);color:#000;
+}
 
 .mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 
@@ -53,8 +60,8 @@ nav .logo img{width:36px}
   display:flex;align-items:center;
   padding:0 6%;color:#fff;
 }
-.hero h1{font-size:42px;margin-bottom:10px;animation:fadeUp 1s}
-.hero p{max-width:520px;line-height:1.6;animation:fadeUp 1.4s}
+.hero h1{font-size:42px;margin-bottom:10px}
+.hero p{max-width:520px;line-height:1.6}
 
 /* SECTION */
 .section{padding:90px 6%;position:relative}
@@ -75,9 +82,12 @@ nav .logo img{width:36px}
   transform:rotate(-12deg);
   z-index:0;
 }
-.section-watermark>*{position:relative;z-index:2}
+.section-watermark>*{
+  position:relative;
+  z-index:2;
+}
 
-/* GREEN */
+/* GREEN SECTION (TANPA WATERMARK) */
 .section-green{
   background:linear-gradient(135deg,var(--army),var(--army-dark));
   color:#fff;
@@ -85,8 +95,7 @@ nav .logo img{width:36px}
 
 /* ABOUT */
 .about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  display:grid;grid-template-columns:1fr 1fr;
   gap:40px;align-items:center;
 }
 .about img{
@@ -107,10 +116,15 @@ nav .logo img{width:36px}
 .krida-card{
   background:rgba(255,255,255,.9);
   padding:20px;border-radius:16px;
-  text-align:center;cursor:pointer;
-  color:#000;transition:.4s;
+  text-align:center;
+  cursor:pointer;
+  color:#000;
+  transition:.4s;
 }
-.krida-card:hover{transform:translateY(-8px)}
+.krida-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 20px rgba(0,0,0,.25);
+}
 .krida-card img{width:50px;margin-bottom:10px}
 
 /* BERITA */
@@ -122,14 +136,29 @@ nav .logo img{width:36px}
   text-decoration:none;color:#000;
   transition:.3s;
 }
-.berita-item:hover{transform:translateX(6px)}
-.berita-item img{width:120px;height:80px;object-fit:cover;border-radius:10px}
+.berita-item:hover{
+  transform:translateX(8px);
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+.berita-item img{
+  width:120px;height:80px;
+  object-fit:cover;border-radius:10px;
+}
 .berita-item span{font-size:12px;color:#666}
 .berita-card{
-  display:inline-block;margin-top:20px;
-  background:var(--gold);color:#000;
-  padding:12px 30px;border-radius:30px;
-  text-decoration:none;font-weight:bold;
+  display:inline-block;
+  margin-top:20px;
+  background:var(--gold);
+  color:#000;
+  padding:12px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+.berita-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
 
 /* PRESTASI */
@@ -146,6 +175,11 @@ nav .logo img{width:36px}
   background:var(--gold);color:#000;
   padding:14px 30px;border-radius:30px;
   text-decoration:none;font-weight:bold;
+  transition:.3s;
+}
+.join a:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 
 /* FOOTER */
@@ -161,9 +195,11 @@ footer{
 }
 .footer-logo{display:flex;gap:15px;align-items:center}
 .footer-logo img{width:60px}
-footer h4{font-weight:600}
+footer h4{font-weight:600;margin-bottom:8px}
 footer p{font-size:14px;line-height:1.6}
-.footer-social a{font-size:20px;margin-right:10px;color:#fff}
+.footer-social a{
+  font-size:20px;margin-right:10px;color:#fff;
+}
 .footer-bottom{text-align:center;margin-top:30px;font-size:13px}
 
 /* MODAL */
@@ -174,14 +210,6 @@ footer p{font-size:14px;line-height:1.6}
   z-index:10000;
 }
 .modal img{max-width:90%;max-height:90%;border-radius:16px}
-
-/* ANIM */
-.reveal{opacity:0;transform:translateY(50px);transition:1s}
-.reveal.active{opacity:1;transform:none}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -224,7 +252,7 @@ footer p{font-size:14px;line-height:1.6}
   </div>
 </div>
 
-<section class="section section-watermark reveal">
+<section class="section section-watermark">
   <h2 class="section-title">Tentang Kami</h2>
   <div class="about">
     <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah wadah pembinaan generasi muda berkarakter, disiplin, dan berjiwa nasionalisme.</p>
@@ -232,7 +260,7 @@ footer p{font-size:14px;line-height:1.6}
   </div>
 </section>
 
-<section class="section section-green reveal">
+<section class="section section-green">
   <h2 class="section-title">Krida</h2>
   <div class="krida-grid">
     <div class="krida-card" onclick="openModal('navrat.jpg')"><img src="navrat.jpg"><h4>Navigasi Darat</h4></div>
@@ -243,14 +271,37 @@ footer p{font-size:14px;line-height:1.6}
   </div>
 </section>
 
-<section class="section section-watermark reveal">
-  <h2 class="section-title">Prestasi</h2>
-  <div class="prestasi-box">
-    Prestasi lomba tingkat Kodim, Korem, dan kegiatan kepramukaan lainnya.
+<section class="section section-watermark">
+  <h2 class="section-title">Berita</h2>
+  <div class="berita-list">
+    <a href="https://share.google/XY0dHdOYJjCmwhAIO" target="_blank" class="berita-item">
+      <img src="a1.jpeg">
+      <div><h4>Mencetak Generasi Berkarakter: Kiprah Saka Wira Kartika Koramil 17/Songgom dalam Pembinaan Pemuda Brebes</h4><span>Sumber: Kompasiana</span></div>
+    </a>
+    <a href="https://share.google/qdZEcdckZeqcEL6wl" target="_blank" class="berita-item">
+      <img src="beritaa.jpg">
+      <div><h4>Saka Wira Kartika Koramil 17/Songgom Gelar Pelantikan Dewan Saka Periode 2025</h4><span>Sumber: Kompasiana</span></div>
+    </a>
+    <a href="https://share.google/sjAGKpHL2ZuxnJjHV" target="_blank" class="berita-item">
+      <img src="berita.jpg">
+      <div><h4>Latihan Rutin Saka Wira Kartika Koramil 17/Songgom</h4><span>Sumber: Kompasiana</span></div>
+    </a>
+    <a href="https://share.google/2uNiatfWqndQlqyv6" target="_blank" class="berita-item">
+      <img src="berita 2020.jpg">
+      <div><h4>Pramuka SWK Songgom Brebes, Long March dan Bersih-bersih Sampah</h4><span>Sumber: korem071.tni-ad.mil.id</span></div>
+    </a>
+    <a class="berita-card" href="berita.html">Selengkapnya...</a>
   </div>
 </section>
 
-<section class="section section-watermark reveal">
+<section class="section section-green">
+  <h2 class="section-title">Prestasi</h2>
+  <div class="prestasi-box">
+    Prestasi lomba tingkat Kodim, Korem, serta kegiatan kepramukaan lainnya.
+  </div>
+</section>
+
+<section class="section section-watermark">
   <div class="join">
     <h2>Gabung Saka Wira Kartika</h2>
     <p>Pendaftaran melalui Google Form</p>
@@ -274,7 +325,9 @@ footer p{font-size:14px;line-height:1.6}
     </div>
     <div class="footer-social">
       <h4>Kontak</h4>
-      <p>083151352929 (Kak Dani)</p>
+      <p>085728346631 (Kak Adam)</p>
+      <p>083121794805 (Kak Janah)</p>
+      <p>088980219635 (Kak Sinta)</p>
       <h4>Media Sosial</h4>
       <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
       <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
@@ -300,14 +353,6 @@ function openModal(src){
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-100){
-      el.classList.add("active");
-    }
-  });
-});
 </script>
 
 </body>
