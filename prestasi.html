@@ -24,17 +24,54 @@ body{background:var(--bg);color:#222}
 
 /* NAVBAR */
 nav{
-  position:sticky;top:0;z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
-  display:flex;justify-content:space-between;align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   animation:fadeDown 1s ease;
 }
-nav ul{display:flex;gap:20px;list-style:none}
-nav a{color:#fff;text-decoration:none;font-size:14px}
-nav a:hover{color:var(--gold)}
-.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
-.logo img{width:36px}
+nav ul{
+  display:flex;
+  gap:20px;
+  list-style:none;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+nav a:hover{
+  color:var(--gold);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  color:#fff;
+}
+.logo img{
+  width:36px;
+}
+
+/* Hamburger mobile */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+.hamburger span{
+  display:block;
+  width:25px;
+  height:3px;
+  background:#fff;
+  border-radius:2px;
+}
 
 /* HERO */
 .hero{
@@ -132,8 +169,21 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   nav ul{flex-wrap:wrap}
 }
 @media(max-width:480px){
-  nav ul{display:none}
-  .hero h1{font-size:30px}
+  .hamburger{display:flex}
+  nav ul{
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:var(--army-dark);
+    padding:10px;
+  }
+  nav ul.active{
+    display:flex;
+  }
 }
 </style>
 </head>
@@ -143,6 +193,11 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   <div class="logo">
     <img src="logo.png">
     Saka Wira Kartika Koramil 17/Songgom
+  </div>
+    <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
   <ul>
     <li><a href="index.html">Beranda</a></li>
@@ -195,9 +250,16 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
       }
     });
   });
+const hamburger = document.getElementById("hamburger");
+const navUl = document.querySelector("nav ul");
+
+hamburger.addEventListener("click", ()=>{
+  navUl.classList.toggle("active");
+});
 </script>
 
 </body>
 
 </html>
+
 
