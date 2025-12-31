@@ -325,13 +325,11 @@ window.addEventListener("scroll",()=>{
     }
   });
 });
-const hamburger = document.getElementById("hamburger");
-const navUl = document.querySelector("nav ul");
+  document.addEventListener("DOMContentLoaded", function(){
+  const hamburger = document.getElementById("menuToggle");
+  const navUl = document.querySelector("nav ul");
+  hamburger.addEventListener("click", ()=>{navUl.classList.toggle("active");});
 
-hamburger.addEventListener("click", ()=>{
-  navUl.classList.toggle("active");
-});
-  // Modal
   function openModal(src){
     document.getElementById("modalImg").src = src;
     document.getElementById("modal").style.display = "flex";
@@ -341,11 +339,13 @@ hamburger.addEventListener("click", ()=>{
   }
   window.openModal = openModal;
   window.closeModal = closeModal;
+});
 </script>
 
 </body>
 
 </html>
+
 
 
 
