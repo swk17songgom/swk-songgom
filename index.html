@@ -75,10 +75,8 @@ nav .logo img{width:36px}
 /* WATERMARK */
 .section-watermark::before{
   content:"";
-  position:absolute;inset:0;
-  background:url("logo.png");
+  position:fixed;inset:0;
   background-size:160px;
-  background-repeat:repeat;
   opacity:.04;
   transform:rotate(-12deg);
   z-index:0;
@@ -115,18 +113,26 @@ nav .logo img{width:36px}
   gap:20px;
 }
 .krida-card{
+  position:relative;
   background:rgba(255,255,255,.9);
   padding:20px;border-radius:16px;
   text-align:center;
   cursor:pointer;
   color:#000;
   transition:.4s;
+  z-index:2;
 }
 .krida-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 10px 20px rgba(0,0,0,.25);
+  transform:translateY(-8px) scale(1.05);
+  background:#fff;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
 }
 .krida-card img{width:50px;margin-bottom:10px}
+
+.krida-crad,
+.krida-card *{
+ pointer-events:auto;
+}
 
 /* BERITA */
 .berita-list{display:grid;gap:15px}
@@ -182,6 +188,102 @@ nav .logo img{width:36px}
   transform:translateY(-6px);
   box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
+.testimoni-section{
+  padding:80px 6%;
+}
+
+.testimoni-wrapper{
+  max-width:900px;
+  margin:auto;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.testimoni-slider{
+  display:flex;
+  gap:20px;
+  width:100%;
+  overflow:hidden;
+  scroll-behavior:smooth;
+}
+
+.testi-item{
+  display:none;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  padding:30px;
+  text-align:center;
+}
+
+.testi-item.active{
+  display:block;
+  animation:fadeSlide .6s ease;
+}
+
+.testi-item img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  margin-bottom:20px;
+  border:5px solid #3f5224;
+}
+
+.testi-text p{
+  font-size:16px;
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+.testi-text span{
+  font-size:14px;
+  font-weight:600;
+  color:#555;
+}
+
+/* PANAH */
+.nav{
+  position:absolute;
+  background:#3f5224;
+  color:#fff;
+  border:none;
+  font-size:26px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+  z-index:10;
+  pointer-events:auto;
+}
+
+.nav:hover{
+  background:#d4af37;
+  color:#000;
+}
+
+.nav.prev{left:-20px}
+.nav.next{right:-20px}
+
+.testimoni-section *,
+.testimoni-section{
+  pointer-events:auto;
+}
+
+/* ANIMASI */
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .slide-btn.left{left:0}
+  .slide-btn.right{right:0}
+}
 
 /* FOOTER */
 footer{
@@ -197,7 +299,7 @@ footer{
 .footer-logo{display:flex;gap:15px;align-items:center}
 .footer-logo img{width:60px}
 footer h4{font-weight:600;margin-bottom:8px}
-footer p{font-size:14px;line-height:1.6}
+footer p{font-size:14px;line-height:1.6;}
 .footer-social a{
   font-size:20px;margin-right:10px;color:#fff;
 }
@@ -224,6 +326,31 @@ footer p{font-size:14px;line-height:1.6}
   .nav-links.active{display:flex}
   .nav-links li{text-align:center;padding:12px 0}
   .mobile-menu{display:block}
+  .map-wrap{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:12px;
+  overflow:hidden;
+  }
+  .map-wrap iframe{
+   position:absolute;
+   inset:0;
+   width:100%;
+   height:100%;
+   border:0%;
+   }
+}
+/* GLOBAL BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:url("logo.png") repeat;
+  background-size:200px;
+  opacity:.05;
+  transform:rotate(-12deg);
+  z-index:-1;
+  pointer-events:none;
 }
 </style>
 </head>
@@ -256,7 +383,7 @@ footer p{font-size:14px;line-height:1.6}
 <section class="section section-watermark">
   <h2 class="section-title">Tentang Kami</h2>
   <div class="about">
-    <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah wadah pembinaan generasi muda berkarakter, disiplin, dan berjiwa nasionalisme.</p>
+    <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah salah satu Satuan Karya Pramuka yang berada di bawah binaan TNI Angkatan Darat, khususnya Koramil 17/Songgom, Kabupaten Brebes. Saka ini dibentuk sebagai wadah pembinaan generasi muda dalam rangka menumbuhkan jiwa patriotisme, kedisiplinan, kepemimpinan, serta semangat bela negara melalui kegiatan kepramukaan yang terarah, terencana, dan berkelanjutan.</p>
     <img src="hero.jpg" onclick="openModal(this.src)">
   </div>
 </section>
@@ -302,6 +429,55 @@ footer p{font-size:14px;line-height:1.6}
   </div>
 </section>
 
+<section class="testimoni-section">
+  <h2 class="section-title">Testimoni</h2>
+
+  <div class="testimoni-wrapper">
+
+    <button class="nav prev" onclick="prevTesti()">&#10094;</button>
+
+    <div class="testimoni-slider" id="testiSlider">
+
+      <div class="testi-item active">
+        <img src="alumni1.jpg" alt="Purna angkatan 1">
+        <div class="testi-text">
+          <p>
+            “Bergabung di Saka Wira Kartika bukan hanya soal kegiatan, tetapi pembentukan karakter. Nilai tanggung jawab, mental tangguh, dan cinta tanah air benar-benar saya rasakan.”
+          </p>
+          <span>—Amar Baharudin, Purna Angkatan 1</span>
+        </div>
+      </div>
+
+      <div class="testi-item">
+        <img src="dani.jpeg" alt="Purna Angkatan 4">
+        <div class="testi-text">
+          <p>
+            “Menjadi bagian dari Saka Wira Kartika Koramil 17/Songgom adalah pengalaman yang sangat berharga. Saya belajar tentang disiplin, kepemimpinan, kerja sama tim, serta rasa cinta tanah 
+
+air. Kegiatan dan pembinaan yang diberikan membentuk karakter saya hingga bermanfaat dalam kehidupan bermasyarakat.”
+          </p>
+          <span>—Ahmad Syifa Maulidani, Purna Angkatan 4</span>
+        </div>
+      </div>
+
+      <div class="testi-item">
+        <img src="lutfun.jpeg" alt="Alumni 2021">
+        <div class="testi-text">
+          <p>
+            “Saka Wira Kartika menjadi tempat saya belajar disiplin, kepemimpinan, dan kebersamaan. Pengalaman selama kegiatan sangat bermanfaat dan menjadi bekal dalam kehidupan saya setelah 
+
+lulus.”
+          </p>
+          <span>—Siti Lutfun Khodikoh, Purna Angkatan 4</span>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="nav next" onclick="nextTesti()">&#10095;</button>
+  </div>
+</section>
+
 <section class="section section-watermark">
   <div class="join">
     <h2>Gabung Saka Wira Kartika</h2>
@@ -320,15 +496,13 @@ footer p{font-size:14px;line-height:1.6}
         <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
       </div>
     </div>
-    <div>
-      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+    <div class="map-wrap">
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="120" style="border:0;border-radius:12px"></iframe>
     </div>
     <div class="footer-social">
-      <h4>Kontak</h4>
-      <p>085728346631 (Kak Adam)</p>
-      <p>083121794805 (Kak Janah)</p>
-      <p>088980219635 (Kak Sinta)</p>
+      <h4>Hubungi Kami</h4>
+      <p>Email : wirakartika17songgom@gmail.com</p>
+      <br>
       <h4>Media Sosial</h4>
       <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
       <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
@@ -354,8 +528,27 @@ function openModal(src){
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
+let testiIndex = 0;
+const testiItems = document.querySelectorAll(".testi-item");
+
+function showTesti(i){
+  testiItems.forEach(item => item.classList.remove("active"));
+  testiItems[i].classList.add("active");
+}
+
+function nextTesti(){
+  testiIndex = (testiIndex + 1) % testiItems.length;
+  showTesti(testiIndex);
+}
+
+function prevTesti(){
+  testiIndex = (testiIndex - 1 + testiItems.length) % testiItems.length;
+  showTesti(testiIndex);
+}
+
+// AUTO SLIDE
+setInterval(nextTesti, 3000);
 </script>
 
 </body>
 </html>
-
