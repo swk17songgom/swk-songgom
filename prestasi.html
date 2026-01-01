@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prestasi Saka Wira Kartika</title>
+<title>Prestasi - Saka Wira Kartika</title>
 <meta name="description" content="Website resmi Saka Wira Kartika Koramil 17 Songgom. profil, krida, kegiatan, prestasi, dan pendaftaran anggota.">
 <meta name="keywords" content="Saka Wira Kartika, Pramuka, Koramil 17 Songgom, Krida, Kegiatan, Prestasi">
 <meta name="author" content="Saka Wira Kartika Koramil 17 Songgom.">
@@ -24,55 +24,31 @@ body{background:var(--bg);color:#222}
 
 /* NAVBAR */
 nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
+  position:sticky;top:0;z-index:9999;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  animation:fadeDown 1s ease;
+  display:flex;justify-content:space-between;align-items:center;
 }
-nav ul{
-  display:flex;
-  gap:20px;
-  list-style:none;
+nav .logo{
+  display:flex;gap:10px;align-items:center;
+  color:#fff;font-weight:bold;font-size:14px;
 }
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
+nav .logo img{width:36px}
+
+.nav-links{
+  display:flex;gap:10px;list-style:none;
 }
-nav a:hover{
-  color:var(--gold);
+.nav-links a{
+  color:#fff;text-decoration:none;
+  padding:12px 14px;border-radius:14px;
+  font-size:14px;transition:.3s;
 }
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-  color:#fff;
-}
-.logo img{
-  width:36px;
+.nav-links a:hover,
+.nav-links a.active{
+  background:var(--gold);color:#000;
 }
 
-/* Hamburger mobile */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
-}
-.hamburger span{
-  display:block;
-  width:25px;
-  height:3px;
-  background:#fff;
-  border-radius:2px;
-}
-
+.mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 /* HERO */
 .hero{
   height:60vh;
@@ -145,10 +121,30 @@ section{padding:60px 6%}
 footer{
   background:var(--army-dark);
   color:#fff;
-  text-align:center;
-  padding:25px;
+  padding:60px 6% 30px;
 }
-footer a{color:#fff;margin:0 10px;font-size:20px}
+.footer-grid{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:2fr 2fr 1fr;
+  gap:40px;
+}
+.footer-logo{display:flex;gap:15px;align-items:center}
+.footer-logo img{width:60px}
+footer h4{font-weight:600;margin-bottom:8px}
+footer p{font-size:14px;line-height:1.6}
+.footer-social a{
+  font-size:20px;margin-right:10px;color:#fff;
+}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px}
+
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.8);
+  justify-content:center;align-items:center;
+  z-index:10000;
+}
+.modal img{max-width:90%;max-height:90%;border-radius:16px}
 
 /* ANIMATIONS */
 @keyframes fadeDown{
@@ -168,22 +164,14 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 @media(max-width:900px){
   nav ul{flex-wrap:wrap}
 }
-@media(max-width:480px){
-  .hamburger{display:flex}
-  nav ul{
-    display:none;
-    flex-direction:column;
-    gap:10px;
-    position:absolute;
-    top:60px;
-    left:0;
-    width:100%;
-    background:var(--army-dark);
-    padding:10px;
+  .nav-links{
+    position:absolute;top:60px;left:0;width:100%;
+    background:rgba(47,62,31,.95);
+    flex-direction:column;display:none;
   }
-  nav ul.active{
-    display:flex;
-  }
+  .nav-links.active{display:flex}
+  .nav-links li{text-align:center;padding:12px 0}
+  .mobile-menu{display:block}
 }
 </style>
 </head>
@@ -191,20 +179,15 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 
 <nav>
   <div class="logo">
-    <img src="logo.png">
-    Saka Wira Kartika Koramil 17/Songgom
+    <img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom
   </div>
-    <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul>
+  <div class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Beranda</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
     <li><a href="kegiatan.html">Kegiatan</a></li>
-    <li><a href="prestasi.html">Prestasi</a></li>
+    <li><a href="prestasi.html"> class="active">Prestasi</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
   </ul>
 </nav>
@@ -220,12 +203,12 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
   <h2 class="section-title">Prestasi</h2>
   <div class="prestasi-grid">
     <div class="prestasi-card">
-      <img src="piala.jpeg" alt="Pertiwika 2018">
+      <img src="piala.jpeg" onclick="openModal(this.src)">
       <h4>Juara beberapa mata lomba pada pertiwika</h4>
       <p>Tingkat Kodim 0713/Brebes Tahun 2018</p>
     </div>
     <div class="prestasi-card">
-      <img src="gerak jalan.jpeg" alt="Gerak Jalan">
+      <img src="gerak jalan.jpeg" onclick="openModal(this.src)">
       <h4>Juara 2 Lomba Gerak Jalan</h4>
       <p>Tingkat kecamatan Songgom 2024</p>
     </div>
@@ -233,33 +216,53 @@ footer a{color:#fff;margin:0 10px;font-size:20px}
 </section>
 
 <footer>
-  <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
-  <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@sakawirakartika17songgom?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
-  <a href="https://youtube.com/@sakawirakartikakoramil17sgm?si=zNThw-lm65xwk3UV"><i class="fab fa-youtube"></i></a>
-  <p>© 2025 Saka Wira Kartika Koramil 17 Songgom</p>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.png">
+      <div>
+        <h4>Saka Wira Kartika</h4>
+        <p>Koramil 17/Songgom</p>
+        <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
+      </div>
+    </div>
+    <div>
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+    </div>
+    <div class="footer-social">
+      <h4>Kontak</h4>
+      <p>085728346631 (Kak Adam)</p>
+      <p>083121794805 (Kak Janah)</p>
+      <p>088980219635 (Kak Sinta)</p>
+      <h4>Media Sosial</h4>
+      <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
+      <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@sakawirakartika17songgom"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/@sakawirakartikakoramil17sgm"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Saka Wira Kartika Koramil 17/Songgom</div>
 </footer>
 
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
 <script>
-  // Reveal animation
-  const reveals = document.querySelectorAll(".prestasi-card");
-  window.addEventListener("scroll", () => {
-    reveals.forEach((el,i)=>{
-      if(el.getBoundingClientRect().top < window.innerHeight - 100){
-        setTimeout(()=>el.classList.add("active"), 150*i);
-      }
-    });
-  });
-const hamburger = document.getElementById("hamburger");
-const navUl = document.querySelector("nav ul");
-
-hamburger.addEventListener("click", ()=>{
-  navUl.classList.toggle("active");
-});
+document.getElementById("menuToggle").onclick=()=>{
+  document.getElementById("navLinks").classList.toggle("active");
+};
+function openModal(src){
+  document.getElementById("modalImg").src=src;
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
 </script>
 
 </body>
 
 </html>
+
 
 
