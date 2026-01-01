@@ -97,6 +97,19 @@ body{
   z-index:1;
 }
 
+/* TRANSPARAN */
+.section-transparan::before{
+  content:"";
+  position:fixed;inset:0;
+  background-size:160px;
+  opacity:.04;
+  z-index:0;
+}
+.section-transparan>*{
+  position:relative;
+  z-index:2;
+}
+
 /* ABOUT */
 .about{
   display:grid;grid-template-columns:1fr 1fr;
@@ -379,7 +392,7 @@ footer *{
   </div>
 </div>
 
-<section class="section section">
+<section class="section section-transparan">
   <h2 class="section-title">Tentang Kami</h2>
   <div class="about">
     <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah salah satu Satuan Karya Pramuka yang berada di bawah binaan TNI Angkatan Darat, khususnya Koramil 17/Songgom, Kabupaten Brebes. Saka ini dibentuk sebagai wadah pembinaan generasi muda dalam rangka menumbuhkan jiwa patriotisme, kedisiplinan, kepemimpinan, serta semangat bela negara melalui kegiatan kepramukaan yang terarah, terencana, dan berkelanjutan.</p>
@@ -398,7 +411,7 @@ footer *{
   </div>
 </section>
 
-<section class="section section">
+<section class="section section-transparan">
   <h2 class="section-title">Berita</h2>
   <div class="berita-list">
     <a href="https://share.google/XY0dHdOYJjCmwhAIO" target="_blank" class="berita-item">
@@ -428,7 +441,7 @@ footer *{
   </div>
 </section>
 
-<section class="section section">
+<section class="section section-transparan">
 <section class="testimoni-section">
   <h2 class="section-title">Testimoni</h2>
 
@@ -479,7 +492,7 @@ lulus.”
 </section>
 </section>
 
-<section class="section section">
+<section class="section section-transparan">
   <div class="join">
     <h2>Gabung Saka Wira Kartika</h2>
     <p>Pendaftaran melalui Google Form</p>
@@ -553,6 +566,7 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
 
 
 
