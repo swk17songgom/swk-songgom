@@ -183,7 +183,7 @@ footer p{font-size:14px;line-height:1.6}
     <li><a href="index.html">Beranda</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li><a href="krida.html">Krida</a></li>
-    <li><a href="kegiatan.html"class="active">Kegiatan</a></li>
+    <li><a href="kegiatan.html" class="active">Kegiatan</a></li>
     <li><a href="prestasi.html">Prestasi</a></li>
 	<li><a href="dokumen.html">Dokumen</a></li>
     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScANmaWANInJjWXC7-VxVdbgAbodXnIarugvnMaxmatX1EtvA/viewform?usp=dialog">Gabung</a></li>
@@ -357,7 +357,7 @@ footer p{font-size:14px;line-height:1.6}
       </div>
     </div>
     <div>
-      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed"width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="120" style="border:0;border-radius:12px"></iframe>
     </div>
     <div class="footer-social">
       <h4>Kontak</h4>
@@ -380,12 +380,13 @@ footer p{font-size:14px;line-height:1.6}
 document.getElementById("menuToggle").onclick = ()=>{document.getElementById("navLinks").classList.toggle("active");
 };
 function openModal(src){
-  document.getElementById("modalImg").src = src;document.getElementById("modal").style.display = "flex";}
+  document.getElementById("modalImg").src = src;
+	document.getElementById("modal").style.display = "flex";}
 function closeModal(){
-  document.getElementById("modal").style.display = "none";}
-
+  document.getElementById("modal").style.display = "none";
+}
 // Scroll reveal animation
-const reveals = document.querySelectorAll(".reveal, .krida-item");window.addEventListener("scroll", () => {reveals.forEach(el => {if(el.getBoundingClientRect().top < window.innerHeight - 100){el.classList.add("active");}
+const reveals = document.querySelectorAll(".reveal, .kegiatan-item");window.addEventListener("scroll", () => {reveals.forEach(el => {if(el.getBoundingClientRect().top < window.innerHeight - 100){el.classList.add("active");}
   });
 });
 </script>
@@ -393,6 +394,7 @@ const reveals = document.querySelectorAll(".reveal, .krida-item");window.addEven
 </body>
 
 </html>
+
 
 
 
