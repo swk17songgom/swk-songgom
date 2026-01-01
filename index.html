@@ -73,17 +73,22 @@ nav .logo img{width:36px}
 }
 
 /* WATERMARK */
+.section-watermark{
+  position:relative;
+  overflow:hidden;
+}
 .section-watermark::before{
   content:"";
-  position:fixed;inset:0;
+  position:absolute;inset:0;
   background-size:160px;
   opacity:.04;
   transform:rotate(-12deg);
   z-index:0;
+  pointer-events:none;
 }
-.section-watermark>*{
+.section-watermark > *{
   position:relative;
-  z-index:2;
+  z-index:1;
 }
 
 /* GREEN SECTION (TANPA WATERMARK) */
@@ -304,7 +309,12 @@ footer p{font-size:14px;line-height:1.6;}
   font-size:20px;margin-right:10px;color:#fff;
 }
 .footer-bottom{text-align:center;margin-top:30px;font-size:13px}
-
+footer,
+footer *{
+  pointer-events:auto;
+  position:relative;
+  z-index:5;
+}
 /* MODAL */
 .modal{
   display:none;position:fixed;inset:0;
@@ -344,7 +354,7 @@ footer p{font-size:14px;line-height:1.6;}
 /* GLOBAL BACKGROUND */
 body::before{
   content:"";
-  position:fixed;inset:0;
+  position:absolute;inset:0;
   background:url("logo.png") repeat;
   background-size:200px;
   opacity:.05;
@@ -552,3 +562,4 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
