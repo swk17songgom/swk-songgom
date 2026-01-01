@@ -202,18 +202,16 @@ footer p{font-size:14px;line-height:1.6}
 
 <section id="prestasi">
   <h2 class="section-title">Prestasi</h2>
-  <div class="prestasi-grid">
-    <div class="prestasi-card">
-      <img src="piala.jpeg" onclick="openModal(this.src)">
-      <h4>Juara beberapa mata lomba pada pertiwika</h4>
-      <p>Tingkat Kodim 0713/Brebes Tahun 2018</p>
-    </div>
-    <div class="prestasi-card">
-      <img src="gerak jalan.jpeg" onclick="openModal(this.src)">
-      <h4>Juara 2 Lomba Gerak Jalan</h4>
-      <p>Tingkat kecamatan Songgom 2024</p>
-    </div>
-  </div>
+  <div class="prestasi-card reveal">
+  <img src="piala.jpeg" onclick="openModal(this.src)">
+  <h4>Juara tergiat dan Juara di beberapa mata lomba pada pertiwika</h4>
+  <p>Tingkat Kodim 0713/Brebes Tahun 2018</p>
+</div>
+<div class="prestasi-card reveal">
+  <img src="gerak jalan.jpeg" onclick="openModal(this.src)">
+  <h4>Juara 2 Lomba Gerak Jalan</h4>
+  <p>Tingkat kecamatan Songgom 2024</p>
+</div>
 </section>
 
 <footer>
@@ -249,6 +247,24 @@ footer p{font-size:14px;line-height:1.6}
   <img id="modalImg">
 </div>
 <script>
+  // Scroll reveal animation
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+      el.classList.add("active");
+    }
+  });
+});
+
+// Trigger satu kali di load biar yang di view langsung muncul
+window.addEventListener("load", () => {
+  reveals.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight){
+      el.classList.add("active");
+    }
+  });
+});
 document.getElementById("menuToggle").onclick=()=>{
   document.getElementById("navLinks").classList.toggle("active");
 };
@@ -264,6 +280,7 @@ function closeModal(){
 </body>
 
 </html>
+
 
 
 
