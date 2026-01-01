@@ -86,7 +86,8 @@ section{padding:60px 6%}
 .prestasi-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:30px;
+  row-gap:40px;
 }
 .prestasi-card{
   background:#fff;
@@ -98,6 +99,7 @@ section{padding:60px 6%}
   opacity:0;
   transform:translateY(40px);
   transition:.8s ease;
+  margin-bottom:40px;
 }
 .prestasi-card.active{
   opacity:1;
@@ -280,6 +282,7 @@ function closeModal(){
 </body>
 
 </html>
+
 
 
 
