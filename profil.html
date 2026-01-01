@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" href="logo.png" type="image/png">
 <style>
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
 :root{
   --army:#3f5224; --army-dark:#2f3e1f; --gold:#d4af37; --bg:#f4f5f0;
 }
@@ -21,13 +25,13 @@ nav{
   padding:12px 6%;
   display:flex;justify-content:space-between;align-items:center;
 }
-nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold}
+nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold;font-size:14px;}
 nav .logo img{width:36px}
 
 .nav-links{display:flex;list-style:none;gap:10px}
 .nav-links a{
   color:#fff;text-decoration:none;
-  padding:12px 14px;border-radius:15px;
+  padding:12px 14px;border-radius:14px;
   transition:.3s;font-size:14px;
 }
 .nav-links a:hover,
@@ -35,30 +39,40 @@ nav .logo img{width:36px}
 
 .mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 
-.hero{height:60vh;background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");background-
+.hero{min-height:85vh;background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 6%;color:#fff;z-index:1;}
+.hero h1{font-size:42px;margin-bottom:10px;animation:slideUp 1s ease forwards;}
+.hero p{max-width:520px;line-height:1.6;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:.3s;}
 
-size:cover;background-position:center;display:flex;align-items:center;padding:0 6%;color:#fff;}
-.hero h1{font-size:38px;margin-bottom:10px;animation:slideUp 1s ease forwards;}
-.hero p{max-width:600px;line-height:1.6;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:.3s;}
-section{padding:60px 6%;position:relative;}
-.section-title{font-size:28px;margin-bottom:30px;border-left:6px solid var(--army);padding-left:12px;}
-
-/* WATERMARK SECTION */
-.section-watermark::before{
-  content:"";
-  position:absolute;inset:0;
-  background:url("logo.png");
-  background-size:120px;
-  background-repeat:repeat; 
-  background-position:center;
-  opacity:.04;
-  transform:rotate(-12deg);
-  z-index:0;
-  pointer-events:none; /* fix klik ga kepalang watermark */
+body{
+  background:#f4f5f0;
+  color:#222;
+  position:relative;
+  min-height:100vh;
 }
-.section-watermark>*{position:relative;z-index:2}
+ body::before{
+  content:"";
+  position:fixed;top:0;left:0;
+  width:100vw;
+  height:100vh;
+  background:url("logo.png");
+  background-repeat:repeat;
+  background-size:220px;
+  opacity:.05;
+  transform:rotate(-15deg);
+  z-index:-1;
+  pointer-events:none;
+}
+section{padding:60px 6%;position:relative;overflow:hidden;}
+.section-title{font-size:26px;margin-bottom:30px;border-left:6px solid var(--army);padding-left:12px;}
 
-.about-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+/* TRANSPARAN */
+.section-transparan{
+  position:relative;
+  background:transparent;
+  z-index:1;
+}
+
+.about-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;line-height:1.8;text-align:justify;}
 .about-section img{
   cursor:pointer;
   transform:rotate(-3deg);
@@ -66,6 +80,7 @@ section{padding:60px 6%;position:relative;}
   max-width:100%;
   max-height:400px;
   border-radius:18px
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 .about-section img:hover{transform:scale(1.05) rotate(-3deg)}
 
@@ -89,6 +104,68 @@ section{padding:60px 6%;position:relative;}
 .arrow.left{left:10px}
 .arrow.right{right:10px}
 
+ /* LOADING */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#2f3e1f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:20000;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-content{
+  text-align:center;
+  color:#fff;
+}
+
+.loader-content img{
+  width:90px;
+  margin-bottom:20px;
+  animation:pulse 1.5s infinite;
+}
+
+.spinner{
+  width:40px;
+  height:40px;
+  border:4px solid rgba(255,255,255,.3);
+  border-top:4px solid #d4af37;
+  border-radius:50%;
+  margin:0 auto 12px;
+  animation:spin 1s linear infinite;
+}
+
+.loader-content p{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ANIMASI */
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+.section,
+nav,
+footer{
+  position:relative;
+  z-index:1;
+}
+
 /* FOOTER */
 footer{
   background:var(--army-dark);
@@ -102,11 +179,16 @@ footer{
 }
 .footer-logo{display:flex;gap:15px;align-items:center}
 .footer-logo img{width:60px}
-footer h4{font-weight:600}
+footer h4{font-weight:600;margin-bottom:8px}
 footer p{font-size:14px;line-height:1.6}
 .footer-social a{font-size:20px;margin-right:10px;color:#fff}
 .footer-bottom{text-align:center;margin-top:30px;font-size:13px}
-
+footer,
+footer *{
+  pointer-events:auto;
+  position:relative;
+  z-index:5;
+}
 .modal{
   display:none;
   position:fixed;
@@ -131,7 +213,6 @@ footer p{font-size:14px;line-height:1.6}
 /* MOBILE */
 @media(max-width:900px){
   .about{grid-template-columns:1fr}
-  .krida-grid{grid-template-columns:repeat(2,1fr)}
   .nav-links{
     position:absolute;top:60px;left:0;width:100%;
     background:rgba(47,62,31,.95);
@@ -140,11 +221,32 @@ footer p{font-size:14px;line-height:1.6}
   .nav-links.active{display:flex}
   .nav-links li{text-align:center;padding:12px 0}
   .mobile-menu{display:block}
+  .map-wrap{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:12px;
+  overflow:hidden;
+  }
+  .map-wrap iframe{
+   position:absolute;
+   inset:0;
+   width:100%;
+   height:100%;
+   border:0%;
+   }
 }
 </style>
 </head>
 <body>
-
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-content">
+    <img src="logo.png" alt="Logo SWK">
+    <div class="spinner"></div>
+    <p>Memuat Website...</p>
+  </div>
+</div>
 <nav>
   <div class="logo"><img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom</div>
   <div class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></div>
@@ -166,17 +268,16 @@ footer p{font-size:14px;line-height:1.6}
   </div>
 </div>
 
-<section class="section section-watermark reveal">
+<section class="section section-transparan">
   <h2 class="section-title">Sejarah</h2>
   <div class="about-section">
-    <p><b>Saka Wira Kartika Koramil 17 Songgom</b> didirikan pada 29 Mei 2016, dibina oleh TNI AD untuk membentuk karakter, disiplin, dan semangat bela negara generasi muda. Sejak berdiri, Saka Wira 
-
-Kartika telah aktif dalam berbagai kegiatan kepemudaan dan pramuka.</p>
+    <p><b>Saka Wira Kartika Koramil 17 Songgom</b> merupakan salah satu wadah pembinaan generasi muda yang berada di bawah pembinaan Tentara Nasional Indonesia Angkatan Darat (TNI AD) melalui Koramil 17 Songgom. Saka ini didirikan pada 29 Mei 2016 sebagai bentuk komitmen dalam menanamkan nilai-nilai bela negara, disiplin, nasionalisme, dan kepemimpinan kepada generasi muda, khususnya melalui jalur kepramukaan. Sejak awal berdirinya, Saka Wira Kartika Koramil 17 Songgom bertujuan untuk menjadi sarana pendidikan nonformal yang membekali anggotanya dengan keterampilan matra darat, pengetahuan kepramukaan, serta pembentukan karakter yang tangguh dan berakhlak mulia. Pembinaan dilakukan secara berkelanjutan dengan mengacu pada nilai Trisatya dan Dasadharma Pramuka, serta semangat pengabdian kepada bangsa dan negara. Dalam perjalanannya, Saka Wira Kartika Koramil 17 Songgom telah melaksanakan berbagai kegiatan pembinaan, pelatihan, dan pengabdian masyarakat. Kegiatan tersebut meliputi latihan rutin, pendidikan kedisiplinan, pelatihan baris-berbaris, survival, navigasi darat, penanggulangan bencana, hingga keterlibatan aktif dalam kegiatan sosial dan kemasyarakatan di wilayah Kecamatan Songgom dan sekitarnya.
+Seiring bertambahnya angkatan dari tahun ke tahun, Saka Wira Kartika Koramil 17 Songgom terus mengalami perkembangan baik dari segi jumlah anggota maupun kualitas pembinaan. Setiap angkatan dibina untuk memiliki jiwa kebersamaan, loyalitas, tanggung jawab, serta kepedulian sosial yang tinggi. Kebersamaan yang terjalin antar anggota dan pembina menjadi kekuatan utama dalam menjaga eksistensi dan keberlanjutan saka ini. Hingga saat ini, Saka Wira Kartika Koramil 17 Songgom telah melahirkan banyak alumni yang berkontribusi positif di berbagai bidang, baik di lingkungan pendidikan, organisasi, maupun masyarakat. Dengan semangat pengabdian tanpa pamrih, Saka Wira Kartika Koramil 17 Songgom berkomitmen untuk terus menjadi wadah pembinaan generasi muda yang berkarakter, berjiwa patriotisme, dan siap menjadi garda terdepan dalam menjaga persatuan dan kesatuan bangsa..</p>
     <img src="a1.jpeg" onclick="openModal(this.src)">
   </div>
 </section>
 
-<section class="section section-watermark reveal">
+<section class="section section-transparan">
   <h2 class="section-title">Visi & Misi</h2>
   <div class="visi-misi">
     <div class="card"><h4>Visi</h4><p>Terwujudnya generasi muda yang cinta tanah air, berjiwa patriotisme, disiplin, dan memiliki keterampilan kepramukaan yang unggul dalam bidang matra 
@@ -193,7 +294,7 @@ darat.</p></div>
   </div>
 </section>
 
-<section class="section section-watermark reveal">
+<section class="section section-transparan">
   <h2 class="section-title">Tujuan</h2>
   <div class="values">
     <div class="value-card">Membentuk Karakter dan Bela Negara</div>
@@ -204,7 +305,7 @@ darat.</p></div>
   </div>
 </section>
 
-<section class="section section-watermark reveal">
+<section class="section section-transparan">
   <h2 class="section-title">Nilai-Nilai</h2>
   <div class="values">
     <div class="value-card">Disiplin</div>
@@ -244,14 +345,13 @@ darat.</p></div>
         <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
       </div>
     </div>
-    <div>
-      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+    <div class="map-wrap">
+      <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="180" style="border:0;border-radius:12px"></iframe>
     </div>
     <div class="footer-social">
-      <h4>Kontak</h4>
-      <p>085728346631 (Kak Adam)</p>
-      <p>083121794805 (Kak Janah)</p>
-      <p>088980219635 (Kak Sinta)</p>
+      <h4>Hubungi Kami</h4>
+      <p>Email : wirakartika17songgom@gmail.com</p>
+      <br>
       <h4>Media Sosial</h4>
       <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
       <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
@@ -341,7 +441,14 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
 });
+  window.addEventListener("load", ()=>{
+  const loader = document.getElementById("loader");
+  setTimeout(()=>{
+    loader.classList.add("hide");
+  }, 500);
+});
 </script>
 </body>
 </html>
+
 
