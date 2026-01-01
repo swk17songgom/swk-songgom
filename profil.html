@@ -20,10 +20,11 @@ body{background:var(--bg);color:#222;}
 
 /* NAV */
 nav{
-  position:fixed;top:0;z-index:9999;
+  position:fixed;top:0;left:0;width:100%;height:72px;z-index:9999;
   background:rgba(47,62,31,.95);
   padding:12px 6%;
   display:flex;justify-content:space-between;align-items:center;
+  z-index:9999;
 }
 nav .logo{display:flex;gap:10px;align-items:center;color:#fff;font-weight:bold;font-size:14px;}
 nav .logo img{width:36px}
@@ -39,7 +40,7 @@ nav .logo img{width:36px}
 
 .mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 
-.hero{min-height:85vh;background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 6%;color:#fff;z-index:1;}
+.hero{min-height: calc(60vh - 72px);display:flex;align-items:center;background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 6%;color:#fff;z-index:1;}
 .hero h1{font-size:42px;margin-bottom:10px;animation:slideUp 1s ease forwards;}
 .hero p{max-width:520px;line-height:1.6;opacity:0;animation:fadeUp 1.2s ease forwards;animation-delay:.3s;}
 
@@ -450,6 +451,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 </body>
 </html>
+
 
 
 
