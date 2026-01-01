@@ -262,6 +262,57 @@ body{
   font-weight:600;
   color:#555;
 }
+  /* LOADING */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#2f3e1f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:20000;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-content{
+  text-align:center;
+  color:#fff;
+}
+
+.loader-content img{
+  width:90px;
+  margin-bottom:20px;
+  animation:pulse 1.5s infinite;
+}
+
+.spinner{
+  width:40px;
+  height:40px;
+  border:4px solid rgba(255,255,255,.3);
+  border-top:4px solid #d4af37;
+  border-radius:50%;
+  margin:0 auto 12px;
+  animation:spin 1s linear infinite;
+}
+
+.loader-content p{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ANIMASI */
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
 
 /* PANAH */
 .nav{
@@ -380,6 +431,14 @@ footer *{
 </head>
 
 <body>
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-content">
+    <img src="logo.png" alt="Logo SWK">
+    <div class="spinner"></div>
+    <p>Memuat Website...</p>
+  </div>
+</div>
 
 <nav>
   <div class="logo">
@@ -572,10 +631,18 @@ function prevTesti(){
 
 // AUTO SLIDE
 setInterval(nextTesti, 3000);
+
+window.addEventListener("load", ()=>{
+  const loader = document.getElementById("loader");
+  setTimeout(()=>{
+    loader.classList.add("hide");
+  }, 500);
+});
 </script>
 
 </body>
 </html>
+
 
 
 
