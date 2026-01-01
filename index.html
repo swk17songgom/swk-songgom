@@ -63,6 +63,7 @@ nav .logo img{width:36px}
   background-position:center;
   display:flex;align-items:center;
   padding:0 6%;color:#fff;
+  z-index:1;
 }
 .hero h1{font-size:42px;margin-bottom:10px}
 .hero p{max-width:520px;line-height:1.6}
@@ -75,13 +76,15 @@ body{
 }
  body::before{
   content:"";
-  position:absolute;inset:-50%;
+  position:fixed;top:0;left:0;
+  width:100vw;
+  height:100vh;
   background:url("logo.png");
   background-repeat:repeat;
-  background-size:250px;
+  background-size:220px;
   opacity:.05;
   transform:rotate(-15deg);
-  z-index:0;
+  z-index:-1;
   pointer-events:none;
 }
 
@@ -573,6 +576,7 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
 
 
 
