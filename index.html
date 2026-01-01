@@ -23,7 +23,6 @@ html, body{
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:#222}
 
 /* NAVBAR */
 nav{
@@ -74,13 +73,13 @@ body{
 }
  body::before{
   content:"";
-  position:fixed;inset:-50%;
+  position:absolute;inset:-50%;
   background:url("logo.png");
   background-repeat:repeat;
   background-size:250px;
   opacity:.05;
   transform:rotate(-15deg);
-  z-index:-10;
+  z-index:0;
   pointer-events:none;
 }
 
@@ -144,7 +143,7 @@ body{
 }
 .krida-card img{width:50px;margin-bottom:10px}
 
-.krida-crad,
+.krida-card,
 .krida-card *{
  pointer-events:auto;
 }
@@ -292,6 +291,12 @@ body{
 @keyframes fadeSlide{
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:none}
+}
+.section,
+nav,
+footer{
+  position:relative;
+  z-index:1;
 }
 
 /* MOBILE */
@@ -566,6 +571,7 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
 
 
 
