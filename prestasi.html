@@ -12,6 +12,10 @@
 <link rel="icon" href="logo.png" type="image/png">
 
 <style>
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
 :root{
   --army:#3f5224;
   --army-dark:#2f3e1f;
@@ -51,7 +55,7 @@ nav .logo img{width:36px}
 .mobile-menu{display:none;color:#fff;font-size:24px;cursor:pointer}
 /* HERO */
 .hero{
-  height:60vh;
+  height:85vh;
   background:
     linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
     url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
@@ -60,6 +64,7 @@ nav .logo img{width:36px}
   display:flex;align-items:center;
   padding:0 6%;color:#fff;
   text-align:center;
+  z-index:1;
 }
 .hero h1{
   font-size:42px;
@@ -67,16 +72,34 @@ nav .logo img{width:36px}
   animation:slideUp 1s ease forwards;
 }
 .hero p{
-  font-size:18px;
-  opacity:0;
+  max-width:520px;line-height:1.6
   animation:fadeUp 1s ease forwards;
   animation-delay:.3s;
 }
+body{
+  background:#f4f5f0;
+  color:#222;
+  position:relative;
+  min-height:100vh;
+}
+ body::before{
+  content:"";
+  position:fixed;top:0;left:0;
+  width:100vw;
+  height:100vh;
+  background:url("logo.png");
+  background-repeat:repeat;
+  background-size:220px;
+  opacity:.05;
+  transform:rotate(-15deg);
+  z-index:-1;
+  pointer-events:none;
+}
 
 /* SECTION */
-section{padding:60px 6%}
+section{padding:60px 6%;position:relative;overflow:hidden;}
 .section-title{
-  font-size:28px;
+  font-size:26px;
   margin-bottom:30px;
   border-left:6px solid var(--army);
   padding-left:12px;
@@ -117,6 +140,57 @@ section{padding:60px 6%}
 .prestasi-card p{
   font-size:14px;
   color:#555;
+}
+  /* LOADING */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#2f3e1f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:20000;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-content{
+  text-align:center;
+  color:#fff;
+}
+
+.loader-content img{
+  width:90px;
+  margin-bottom:20px;
+  animation:pulse 1.5s infinite;
+}
+
+.spinner{
+  width:40px;
+  height:40px;
+  border:4px solid rgba(255,255,255,.3);
+  border-top:4px solid #d4af37;
+  border-radius:50%;
+  margin:0 auto 12px;
+  animation:spin 1s linear infinite;
+}
+
+.loader-content p{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ANIMASI */
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
 }
 
 /* FOOTER */
@@ -174,11 +248,32 @@ footer p{font-size:14px;line-height:1.6}
   .nav-links 
   li{text-align:center;padding:12px 0}
   .mobile-menu{display:block}
+.map-wrap{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:12px;
+  overflow:hidden;
+  }
+  .map-wrap iframe{
+   position:absolute;
+   inset:0;
+   width:100%;
+   height:100%;
+   border:0%;
+   }
 }
 </style>
 </head>
 <body>
-
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-content">
+    <img src="logo.png" alt="Logo SWK">
+    <div class="spinner"></div>
+    <p>Memuat Website...</p>
+  </div>
+</div>
 <nav>
   <div class="logo">
     <img src="logo.png"> Saka Wira Kartika Koramil 17/Songgom
@@ -226,15 +321,14 @@ footer p{font-size:14px;line-height:1.6}
         <p>Jl. Raya Jatirokeh, Kecamatan Songgom, Kabupaten Brebes</p>
       </div>
     </div>
-    <div>
+    <div class="map-wrap">
       <iframe src="https://maps.google.com/maps?q=Songgom&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        width="100%" height="120" style="border:0;border-radius:12px"></iframe>
+        width="100%" height="180" style="border:0;border-radius:12px"></iframe>
     </div>
     <div class="footer-social">
-      <h4>Kontak</h4>
-      <p>085728346631 (Kak Adam)</p>
-      <p>083121794805 (Kak Janah)</p>
-      <p>088980219635 (Kak Sinta)</p>
+      <h4>Hubungi Kami</h4>
+      <p>Email : wirakartika17songgom@gmail.com</p>
+      <br>
       <h4>Media Sosial</h4>
       <a href="https://share.google/N50eWtgBKJkjJ19re"><i class="fab fa-facebook"></i></a>
       <a href="https://share.google/Encmp4LCKParHZvo7"><i class="fab fa-instagram"></i></a>
@@ -277,11 +371,18 @@ function openModal(src){
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
+window.addEventListener("load", ()=>{
+  const loader = document.getElementById("loader");
+  setTimeout(()=>{
+    loader.classList.add("hide");
+  }, 500);
+});
 </script>
 
 </body>
 
 </html>
+
 
 
 
