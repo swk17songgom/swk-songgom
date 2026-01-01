@@ -64,31 +64,19 @@ nav .logo img{width:36px}
 .hero h1{font-size:42px;margin-bottom:10px}
 .hero p{max-width:520px;line-height:1.6}
 
+body{
+  background: 
+    url("logo.png") repeat,
+    #f4f5f0;
+  background-size:200px;
+}
+
 /* SECTION */
-.section{padding:90px 6%;position:relative}
+.section{padding:90px 6%;position:relative;background:transparent;}
 .section-title{
   font-size:26px;margin-bottom:30px;
   border-left:6px solid var(--army);
   padding-left:12px;
-}
-
-/* WATERMARK */
-.section-watermark{
-  position:relative;
-  overflow:hidden;
-}
-.section-watermark::before{
-  content:"";
-  position:absolute;inset:0;
-  background-size:160px;
-  opacity:.04;
-  transform:rotate(-12deg);
-  z-index:0;
-  pointer-events:none;
-}
-.section-watermark > *{
-  position:relative;
-  z-index:1;
 }
 
 /* GREEN SECTION (TANPA WATERMARK) */
@@ -351,17 +339,6 @@ footer *{
    border:0%;
    }
 }
-/* GLOBAL BACKGROUND */
-body::before{
-  content:"";
-  position:absolute;inset:0;
-  background:url("logo.png") repeat;
-  background-size:200px;
-  opacity:.05;
-  transform:rotate(-12deg);
-  z-index:-1;
-  pointer-events:none;
-}
 </style>
 </head>
 
@@ -390,7 +367,7 @@ body::before{
   </div>
 </div>
 
-<section class="section section-watermark">
+<section class="section">
   <h2 class="section-title">Tentang Kami</h2>
   <div class="about">
     <p><b>Saka Wira Kartika Koramil 17/Songgom</b> adalah salah satu Satuan Karya Pramuka yang berada di bawah binaan TNI Angkatan Darat, khususnya Koramil 17/Songgom, Kabupaten Brebes. Saka ini dibentuk sebagai wadah pembinaan generasi muda dalam rangka menumbuhkan jiwa patriotisme, kedisiplinan, kepemimpinan, serta semangat bela negara melalui kegiatan kepramukaan yang terarah, terencana, dan berkelanjutan.</p>
@@ -409,7 +386,7 @@ body::before{
   </div>
 </section>
 
-<section class="section section-watermark">
+<section class="section">
   <h2 class="section-title">Berita</h2>
   <div class="berita-list">
     <a href="https://share.google/XY0dHdOYJjCmwhAIO" target="_blank" class="berita-item">
@@ -439,6 +416,7 @@ body::before{
   </div>
 </section>
 
+<section class="section">
 <section class="testimoni-section">
   <h2 class="section-title">Testimoni</h2>
 
@@ -487,8 +465,9 @@ lulus.”
     <button class="nav next" onclick="nextTesti()">&#10095;</button>
   </div>
 </section>
+</section>
 
-<section class="section section-watermark">
+<section class="section">
   <div class="join">
     <h2>Gabung Saka Wira Kartika</h2>
     <p>Pendaftaran melalui Google Form</p>
@@ -562,4 +541,5 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
 
