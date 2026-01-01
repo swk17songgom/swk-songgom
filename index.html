@@ -65,12 +65,21 @@ nav .logo img{width:36px}
 .hero p{max-width:520px;line-height:1.6}
 
 body{
-  background: 
-    url("logo.png") repeat,
-    #f4f5f0;
+  background:#f4f5f0;
+  color:#222;
+  position:relative;
+}
+ body::before{
+  content:"";
+  position:fixed;inset:-50%;
+  background-image:url("logo.png");
+  background-repeat:repeat;
   background-size:200px;
-  opacity:.05;
-  transform:rotate(-12deg);
+  opacity:0.04;
+  transform:rotate(-15deg);
+  z-index:-1;
+  pointer-events:none;
+}
 }
 
 /* SECTION */
@@ -543,6 +552,7 @@ setInterval(nextTesti, 3000);
 
 </body>
 </html>
+
 
 
 
