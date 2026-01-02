@@ -618,7 +618,7 @@ function renderPagination(){
       currentPage = i;
       renderItems();
       renderPagination();
-      window.scrollTo({"kegiatanTop", behavior:"smooth"});
+      window.scrollTo({top:1500, behavior:"smooth"});
     };
     pagination.appendChild(btn);
   }
@@ -661,6 +661,7 @@ toTop.addEventListener("click", ()=>{
 </body>
 
 </html>
+
 
 
 
