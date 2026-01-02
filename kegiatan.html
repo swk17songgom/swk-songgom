@@ -370,6 +370,7 @@ footer p{font-size:14px;line-height:1.6}
     placeholder="Cari kegiatan..."
   >
 </div>
+<div class="kegiatanTop"></div>
   <h2 class="section-title">Kegiatan</h2>
 	
   <!-- Contoh Kegiatan 9 -->
@@ -617,7 +618,7 @@ function renderPagination(){
       currentPage = i;
       renderItems();
       renderPagination();
-      window.scrollTo({top:0, behavior:"smooth"});
+      window.scrollTo({top:75, behavior:"smooth"});
     };
     pagination.appendChild(btn);
   }
@@ -660,6 +661,7 @@ toTop.addEventListener("click", ()=>{
 </body>
 
 </html>
+
 
 
 
