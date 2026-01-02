@@ -365,7 +365,28 @@ footer{
     font-size:20px;
   }
 }
+#toTop{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  background:#3f5224;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+  display:none;
+  z-index:9999;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  transition:.3s;
+}
 
+#toTop:hover{
+  background:#d4af37;
+  color:#000;
+}
 /* FOOTER */
 footer{
   background:var(--army-dark);
@@ -600,7 +621,7 @@ lulus.”
 <div class="modal" id="modal" onclick="closeModal()">
   <img id="modalImg">
 </div>
-
+<button id="toTop" title="Kembali ke atas">↑</button>
 <script>
 document.getElementById("menuToggle").onclick=()=>{
   document.getElementById("navLinks").classList.toggle("active");
@@ -639,10 +660,28 @@ window.addEventListener("load", ()=>{
     loader.classList.add("hide");
   }, 500);
 });
+
+const toTop = document.getElementById("toTop");
+
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 300){
+    toTop.style.display = "block";
+  }else{
+    toTop.style.display = "none";
+  }
+});
+
+toTop.addEventListener("click", ()=>{
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+});
 </script>
 
 </body>
 </html>
+
 
 
 
