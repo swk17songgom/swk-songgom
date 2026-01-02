@@ -339,7 +339,7 @@ footer *{
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Cari berita...">
   </div>
-
+  <div id="beritaTop"></div>
   <div class="berita-list" id="beritaList"></div>
 
   <div class="pagination" id="pagination"></div>
@@ -456,6 +456,9 @@ function renderPagination(){
 function gotoPage(p){
     currentPage = p;
     render();
+  
+  document.getElementById("beritaTop")
+    .scrollIntoView({ behavior:"smooth" });
 }
 
 // Search
@@ -495,6 +498,7 @@ toTop.addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
