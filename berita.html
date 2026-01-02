@@ -108,28 +108,28 @@ body{
 }
 
 /* BERITA */
-#beritaContainer{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+#beritaContainer{display:flex;flex-direction: column;gap:20px;}
 .berita-item{
   display:flex;
-  gap:12px;
+  gap:16px;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 16px;
-  flex-direction:column;
-  align-items: center;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
   background:rgba(255,255,255,.9);
   border-radius:14px;
-  overflow:hidden;transition:.3s;
+  overflow:hidden;
+  transition:.3s;
   cursor:pointer;
 }
 .berita-item:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.2);}
-.berita-item img{width: 140px;height: 100px;object-fit:cover;border-radius:10px;flex-shrink:0;background: #eee;}
-.berita-item div{padding:15px;}
-.berita-item h4{font-size:16px;margin-bottom: 0 0 6px;line-height: 1,3}
+.berita-item img{width: 160px;height: 110px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+.berita-item div{display: flex;flex-direction: column;padding:15px;}
+.berita-item h4{font-size:16px;margin-bottom: 0 0 6px;}
 .berita-item h4 a{text-decoration:none;color:#222;}
 .berita-item h4 a:hover{color:var(--army);}
-.berita-item span{font-size:12px;color:#777;}
-.berita-item p{font-size:14px;color:#444;margin-top:6px 0 0;line-height:1.5;}
+.berita-item span{font-size:12px;color:#777;margin-bottom: 6px;}
+.berita-item p{font-size:14px;color:#444;margin-top:0;line-height:1.5;}
 
 /* PAGINATION */
 .pagination{
@@ -454,6 +454,7 @@ window.addEventListener("load", ()=>{
 
 </body>
 </html>
+
 
 
 
